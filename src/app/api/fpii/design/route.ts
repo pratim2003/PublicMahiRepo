@@ -28,8 +28,7 @@ export async function GET(req: Request): Promise<Response> {
 export async function POST(req: Request): Promise<Response> {
   await connect();
   try {
-    const formData = await req.formData();
-    const newDesign = await createDesignController(formData);
+    const newDesign : Promise<any>= await createDesignController(req);
 
     return Response.json(
       {

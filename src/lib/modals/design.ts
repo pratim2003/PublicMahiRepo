@@ -6,7 +6,7 @@ export interface DesignEntry extends Document {
   heading: string;
   subHead1?: string;
   subHead2?: string;
-  image: string;
+  image?: string;
 }
 
 

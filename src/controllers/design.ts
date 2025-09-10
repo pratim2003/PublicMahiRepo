@@ -3,16 +3,16 @@ import fs from "fs";
 import { DesignModel } from "src/lib/modals/design";
 import {uploadImage} from "src/utils/fileupload"
 
-export async function createDesignController(formData: FormData) {
+export async function createDesignController(req:Request) : Promise<any> {
+  const formData = await req.formData()
   const containt = formData.get("containt") as string;
   const heading = formData.get("heading") as string;
   const subHead1 = (formData.get("subHead1") as string) || "";
   const subHead2 = (formData.get("subHead2") as string) || "";
 
 
-  const file = formData.get("images") as File | null;
+  const file = formData.get("file") as File | null;
   let savedImage = "";
-
   if (file) {
     const uploadResult = await uploadImage(file);
     if (uploadResult.success && uploadResult.path) {
@@ -25,7 +25,7 @@ export async function createDesignController(formData: FormData) {
     heading,
     subHead1,
     subHead2,
-    images: savedImage, 
+    image: savedImage, 
   });
 
   return newDesign;

@@ -15,10 +15,8 @@ async function connect() : Promise<void>{
         return;
     }
     try {
-      if(connectionState==0){
         await mongoose.connect(db)
         console.log("mongodb connected")
-      }
     } catch (error) {
         console.log(error)
         if(error instanceof Error){

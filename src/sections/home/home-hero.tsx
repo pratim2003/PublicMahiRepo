@@ -72,18 +72,18 @@ export function HomeHero({ data }: HomeHeroProps) {
           {/* Left Content */}
           <Grid item xs={12} md={7}>
             <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
-              {homeContent.heading.split('', 10)}
+              {homeContent?.heading?.split('', 10)}
             </Typography>
 
             <Typography variant="h5" sx={{ fontWeight: 500, mb: 3 }}>
-              {homeContent.heading.substring(10)}
+              {homeContent?.heading?.substring(10)}
             </Typography>
 
             <Typography
               variant="body1"
               sx={{ mb: 4, lineHeight: 1.8, fontSize: '1.05rem', maxWidth: '600px' }}
             >
-              {homeContent.body}
+              {homeContent?.body}
             </Typography>
 
             {/* Contact Form */}

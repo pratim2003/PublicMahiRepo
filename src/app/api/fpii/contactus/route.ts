@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import connect from "src/lib/db";
 import contactusModel from "src/lib/modals/contactUs";
 
@@ -6,10 +6,12 @@ export async function POST(req:NextRequest){
     await connect()
     try {
         const data = await req.json()
-        await contactusModel.create(...data)
-        return Response.json({
+        await contactusModel.create({...data})
+        return NextResponse.json({
             success :true,
             message : "message created"
+        },{
+            status : 200
         })
     } catch (error) {
         console.error("Error fetching designs:", error);

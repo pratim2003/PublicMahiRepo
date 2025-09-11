@@ -41,7 +41,7 @@ export function ComponentsView() {
         </MotionContainer>
       </ComponentHero>
 
-      <Container sx={{ mt: 10, mb: 15 }}>
+      {/* <Container sx={{ mt: 10, mb: 15 }}>
         <Stack direction={{ xs: 'column', md: 'row' }} alignItems={{ md: 'flex-start' }}>
           <ComponentNav />
 
@@ -115,7 +115,7 @@ export function ComponentsView() {
             </Stack>
           </Stack>
         </Stack>
-      </Container>
+      </Container> */}
     </>
   );
 }

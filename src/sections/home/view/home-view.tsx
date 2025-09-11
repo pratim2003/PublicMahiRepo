@@ -18,8 +18,21 @@ import { HomeHugePackElements } from '../home-hugepack-elements';
 import { HomeHighlightFeatures } from '../home-highlight-features';
 
 // ----------------------------------------------------------------------
+interface FetchedHomeData {
+  data: {
+    _id: string;
+    heading: string;
+    body: string;
+    image: string;
+    __v: number;
+  }[];
+}
 
-export function HomeView() {
+interface HomeViewProps {
+  homeData: FetchedHomeData;
+}
+
+export function HomeView({ homeData }: HomeViewProps) {
   const pageProgress = useScrollProgress();
 
   return (
@@ -32,7 +45,7 @@ export function HomeView() {
 
       <BackToTop />
 
-      <HomeHero />
+      <HomeHero data={homeData} />
 
       {/* <Stack sx={{ position: 'relative', bgcolor: 'background.default' }}>
         <HomeMinimal />

@@ -23,4 +23,4 @@ const BroadcatSchema = new Schema<BroadcatEntry>(
 
 
 export const broadcatModel: Model<BroadcatEntry> =
-  mongoose.models.broadcat || mongoose.model<BroadcatEntry>("Broadcat", BroadcatSchema);
+  mongoose.models.Broadcat || mongoose.model<BroadcatEntry>("Broadcat", BroadcatSchema);

@@ -13,6 +13,6 @@ const homeShema:Schema<home> = new Schema<home>({
 })
 
 
-const homeModel = models.Home as mongoose.Model<home> || model<home>("home",homeShema)
+const homeModel = models.home as mongoose.Model<home> || model<home>("home",homeShema)
 
 export default homeModel

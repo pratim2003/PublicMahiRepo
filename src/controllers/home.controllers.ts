@@ -5,7 +5,7 @@ import { uploadImage } from "src/utils/fileupload";
 export async function getHome() : Promise<any>{
     try {
         const data = await homeModel.find()
-        return {data,status : 200}
+        return {data : data[0],status : 200}
     } catch (error:any) {
         console.error(error)
         return {error,status : 500}

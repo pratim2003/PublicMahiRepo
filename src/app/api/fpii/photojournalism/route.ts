@@ -1,12 +1,14 @@
-import { NextRequest } from "next/server"
-import {CreatePhoto,getPhoto} from "../../../../controllers/photo.controller"
+import type { NextRequest } from "next/server"
+
 import connect from "src/lib/db"
+
+import {getPhoto,CreatePhoto} from "../../../../controllers/photo.controller"
 
 export async function GET(){
     await connect()
     try {
         const data  = await getPhoto()
-        if(data.status==500){
+        if(data.status===500){
             return Response.json({
                 error : data.error
             },{

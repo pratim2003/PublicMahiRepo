@@ -1,5 +1,5 @@
 import connect from "src/lib/db";
-import { getAllDesignsController , createDesignController } from "src/controllers/design";
+import { createDesignController , getAllDesignsController } from "src/controllers/design";
 
 export async function GET(req: Request): Promise<Response> {
   await connect();

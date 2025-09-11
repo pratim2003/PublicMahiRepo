@@ -1,13 +1,15 @@
-import {createArticle,getArticle} from "../../../../controllers/write.controllers"
+import type { NextRequest} from "next/server";
+
 import connect from "src/lib/db"
-import { NextRequest,NextResponse } from "next/server"
+
+import {getArticle,createArticle} from "../../../../controllers/write.controllers"
 
 
 export async function GET(){
     await connect()
     try {
         const data = await getArticle()
-        if(data.status==500){
+        if(data.status===500){
             return Response.json({
                 error : data.error
             },{

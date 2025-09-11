@@ -1,4 +1,6 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import type { Model, Document } from "mongoose";
+
+import mongoose, { Schema } from "mongoose";
 
 
 export interface BroadcatEntry extends Document {

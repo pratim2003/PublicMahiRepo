@@ -1,8 +1,10 @@
 'use client';
 
 import { m } from 'framer-motion';
-import { Box, Container, Typography, TextField, Button, Grid } from '@mui/material';
-import { MotionContainer, varFade } from 'src/components/animate';
+
+import { Box, Grid, Button, Container, TextField, Typography } from '@mui/material';
+
+import { varFade, MotionContainer } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 

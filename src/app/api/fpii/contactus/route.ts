@@ -1,4 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import type { NextRequest} from "next/server";
+
+import { NextResponse } from "next/server";
+
 import connect from "src/lib/db";
 import contactusModel from "src/lib/modals/contactUs";
 

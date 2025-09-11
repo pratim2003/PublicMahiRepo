@@ -1,4 +1,7 @@
-import mongoose,{Schema,model,models,Document} from "mongoose";
+import type mongoose from "mongoose";
+import type {Document} from "mongoose";
+
+import {model,Schema,models} from "mongoose";
 
 interface photoSchema extends Document{
     heading : string,

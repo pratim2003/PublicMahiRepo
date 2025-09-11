@@ -1,12 +1,13 @@
-import {getHome,createHome} from "../../../../controllers/home.controllers"
+
 import connect from "src/lib/db";
-import {uploadImage} from "src/utils/fileupload"
+
+import {getHome,createHome} from "../../../../controllers/home.controllers"
 
 export async function GET(){
     await connect()
     try {
         const data  = await getHome()
-        if(data.status==500){
+        if(data.status===500){
             return Response.json({
                 error : data.error
             },{

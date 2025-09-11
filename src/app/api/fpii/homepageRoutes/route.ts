@@ -1,12 +1,12 @@
 
+
 import connect from "src/lib/db";
-import {handleGetData , handleCreateNewData} from "src/controllers/4pii_newHomepageHandler"
+import {handleGetData , 
+    // handleCreateNewData
+} 
+    from "src/controllers/4pii_newHomepageHandler"
 
-
-import fs from "fs"
-import path from "path";
-
-const uploadDir = path.join(process.cwd(),"public","upload")
+// const uploadDir = path.join(process.cwd(),"public","upload")
 
 export async function GET (req:Request) : Promise<Response>{
     await connect()
@@ -28,10 +28,10 @@ export async function GET (req:Request) : Promise<Response>{
 }
 
 
-export async function POST(req: Request): Promise<Response> {
-  await connect();
-  return handleCreateNewData(req); // 👈 controller call
-}
+// export async function POST(req: Request): Promise<Response> {
+//   await connect();
+//   return handleCreateNewData(req); // 👈 controller call
+// }
 
 
 

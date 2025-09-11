@@ -1,5 +1,5 @@
 import connect from "src/lib/db";
-import { getbroadcastController, broadcastController} from "src/controllers/broadcast";
+import { broadcastController, getbroadcastController} from "src/controllers/broadcast";
 
 export async function GET(req: Request): Promise<Response> {
   await connect();

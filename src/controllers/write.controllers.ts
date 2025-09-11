@@ -1,6 +1,8 @@
-import { NextRequest } from "next/server";
-import ArticleModel from "src/lib/modals/write";
+import type { NextRequest } from "next/server";
+
 import { uploadImage } from "src/utils/fileupload";
+
+import ArticleModel from "src/lib/modals/write";
 
 export async function getArticle(){
     try {
@@ -38,23 +40,29 @@ export async function createArticle(req:NextRequest){
       const id = formData.get("id") as string;
 
       const files = formData.getAll("files") as File[]
-        const savedImages: string[] = []
-        for (const file of files){
-            if (file) {
-                const uploadResult = await uploadImage(file);
-                if (uploadResult.success && uploadResult.path) {
-                  savedImages.push(uploadResult.path);
-                }
-            }
-        }
+        // let savedImages: string[] = []
+        // for (const file of files){
+        //     if (file) {
+        //         const uploadResult = await uploadImage(file);
+        //         if (uploadResult.success && uploadResult.path) {
+        //           savedImages.push(uploadResult.path);
+        //         }
+        //     }
+        // }
+        const uploadResults = await Promise.all(
+            files.map((file) => file ? uploadImage(file) : null)
+        );
+        const savedImages: string[] = uploadResults.flatMap((res) =>
+            res && res.success && res.path ? [res.path] : []
+        );
         if(id){
             const data = await ArticleModel.findById(id).lean()
             await ArticleModel.findByIdAndUpdate(id,{
-            title : title?title:data?.title,
-            subtitle : subtitle?subtitle:data?.subtitle,
+            title : title || data?.title,
+            subtitle : subtitle || data?.subtitle,
             authors : authors.length>0?authors:data?.authors,
             tags : tags.length>0?tags:data?.tags,
-            body : body?body:data?.body,
+            body : body || data?.body,
             images : savedImages.length>0?savedImages:data?.images
         })
         return {status : 200}

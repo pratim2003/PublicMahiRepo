@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 const dbUri = process.env.mongoURI
 if(!dbUri){
     throw new Error("mongodb uri is not present in env")
@@ -6,11 +7,11 @@ if(!dbUri){
 const db : string = `${dbUri}mahiRepo`
 async function connect() : Promise<void>{
     const connectionState : number = mongoose.connection.readyState
-    if(connectionState == 1){
+    if(connectionState === 1){
         console.log("database already connected")
         return 
     }
-    if(connectionState == 2){
+    if(connectionState === 2){
         console.log("connecting ....");
         return;
     }

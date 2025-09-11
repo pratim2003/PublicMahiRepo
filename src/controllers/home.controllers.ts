@@ -1,5 +1,6 @@
-import homeModel from "src/lib/modals/home";
 import { uploadImage } from "src/utils/fileupload";
+
+import homeModel from "src/lib/modals/home";
 
 
 export async function getHome() : Promise<any>{
@@ -39,9 +40,9 @@ export async function createHome(req:Request) : Promise<any>{
             if(id){
                 const data = await homeModel.findById(id)
                 await homeModel.findByIdAndUpdate(id,{
-                heading : heading?heading:data?.heading,
-                body : body?body:data?.body,
-                image : savedImage?savedImage:data?.image
+                heading : heading || data?.heading,
+                body : body || data?.body,
+                image : savedImage || data?.image
             })
             return {status : 200}
             }

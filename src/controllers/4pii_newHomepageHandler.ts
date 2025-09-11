@@ -1,4 +1,4 @@
-import {homePageModel} from "../lib/modals/4pii_NewHompageContent"
+import {homePageModel } from "../lib/modals/4pii_NewHompageContent"
 // const basepath = process.env.BASE_PATH;
 // const basepath = "https://pw73zddd-4072.inc1.devtunnels.ms/api"
 
@@ -31,69 +31,58 @@ export  const handleGetData = async(): Promise<any> =>{
     }
 }
 
+// export async function handleCreateNewData(req: Request) {
+//   await connect();
+//   try {
+//     const formData = await req.formData();
 
+//     // Get JSON body
+//     const bodyStr = formData.get("body") as string; // Postman -> key = body, type = text
+//     const body = JSON.parse(bodyStr);
 
+//     // Handle files
+//     const files: File[] = [];
+//     formData.forEach((val) => {
+//       if (val instanceof File) files.push(val);
+//     });
 
+//     const savedFiles: Record<string, string> = {};
 
+//     for (let i = 0; i < files.length; i+1) {
+//       const file = files[i];
+//       const uploadedUrl = await uploadToR2(file);
+//       savedFiles[file.name] = uploadedUrl;
+//     }
 
-import connect from "../lib/db";
-import { DemoImageModel } from "../lib/modals/4pii_NewHompageContent";
-import { uploadToR2 } from "../utils/cloudflare";
+//     // Map uploaded files to homeContent
+//     // Example: if you want to set image1, image2, etc.
+//     if (body.homeContent) {
+//       const {homeContent} = body;
 
-export async function handleCreateNewData(req: Request) {
-  await connect();
-  try {
-    const formData = await req.formData();
+//       // Automatically map any uploaded file URLs by matching keys
+//       if (homeContent.images && Array.isArray(homeContent.images)) {
+//         homeContent.images = homeContent.images.map((img: any) => savedFiles[img.originalName] || img.url || "");
+//       }
 
-    // Get JSON body
-    const bodyStr = formData.get("body") as string; // Postman -> key = body, type = text
-    const body = JSON.parse(bodyStr);
+//       // Save to DB
+//       await DemoImageModel.create({
+//         ...homeContent,
+//         images: homeContent.images,
+//       });
+//     }
 
-    // Handle files
-    const files: File[] = [];
-    formData.forEach((val) => {
-      if (val instanceof File) files.push(val);
-    });
-
-    const savedFiles: Record<string, string> = {};
-
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const uploadedUrl = await uploadToR2(file);
-      savedFiles[file.name] = uploadedUrl;
-    }
-
-    // Map uploaded files to homeContent
-    // Example: if you want to set image1, image2, etc.
-    if (body.homeContent) {
-      const homeContent = body.homeContent;
-
-      // Automatically map any uploaded file URLs by matching keys
-      if (homeContent.images && Array.isArray(homeContent.images)) {
-        homeContent.images = homeContent.images.map((img: any) => {
-          return savedFiles[img.originalName] || img.url || "";
-        });
-      }
-
-      // Save to DB
-      await DemoImageModel.create({
-        ...homeContent,
-        images: homeContent.images,
-      });
-    }
-
-    return Response.json(
-      { success: true, message: "Data saved successfully", files: savedFiles },
-      { status: 200 }
-    );
-  } catch (err: any) {
-    console.error("Error saving data:", err);
-    return Response.json(
-      { success: false, message: "Internal Server Error", error: err.message },
-      { status: 500 }
-    );
-  }
-}
+//     return Response.json(
+//       { success: true, message: "Data saved successfully", files: savedFiles },
+//       { status: 200 }
+//     );
+//   } catch (err: any) {
+//     console.error("Error saving data:", err);
+//     return Response.json(
+//       { success: false, message: "Internal Server Error", error: err.message },
+//       { status: 500 }
+//     );
+//   }
+// }
 
 
 

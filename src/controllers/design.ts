@@ -1,7 +1,6 @@
-import path from "path";
-import fs from "fs";
-import { DesignModel } from "src/lib/modals/design";
 import {uploadImage} from "src/utils/fileupload"
+
+import { DesignModel } from "src/lib/modals/design";
 
 export async function createDesignController(req:Request) : Promise<any> {
   const formData = await req.formData()

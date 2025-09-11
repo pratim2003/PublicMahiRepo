@@ -1,6 +1,8 @@
-import { NextRequest } from "next/server";
-import photoModel from "src/lib/modals/photoJounalism";
+import type { NextRequest } from "next/server";
+
 import { uploadImage } from "src/utils/fileupload";
+
+import photoModel from "src/lib/modals/photoJounalism";
 
 export async function getPhoto(){
     try {
@@ -45,9 +47,9 @@ export async function CreatePhoto(req:NextRequest){
         if(id){
             const data = await photoModel.findById(id).lean()
             await photoModel.findByIdAndUpdate(id,{
-            heading : heading?heading:data?.heading,
-            content : content?content:data?.content,
-            image : savedImage?savedImage:data?.image
+            heading : heading || data?.heading,
+            content : content || data?.content,
+            image : savedImage || data?.image
         })
         return {status : 200}
         }

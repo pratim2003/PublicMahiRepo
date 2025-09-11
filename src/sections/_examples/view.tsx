@@ -134,19 +134,21 @@ export function ComponentsView() {
           </Typography>
 
           <Typography paragraph sx={italicStyle}>
-            "From what I’ve heard, especially from my older students who have experienced similar
-            threats in the past, no threat has led to anyone at Monta Vista being physically harmed,
-            so students’ first reaction may be to question their validity,” Cassar said. “This might
-            explain why some students have not been emotionally affected in the ways I expected as a
-            new member of the MV community.”
-          </Typography>
+  &quot;From what I&apos;ve heard, especially from my older students who have experienced similar
+  threats in the past, no threat has led to anyone at Monta Vista being physically harmed,
+  so students&apos; first reaction may be to question their validity,&rdquo; Cassar said. &ldquo;This might
+  explain why some students have not been emotionally affected in the ways I expected as a
+  new member of the MV community.&rdquo;
+</Typography>
+
 
           <Typography paragraph sx={bodyStyle}>
-            However, Junior Jillian Ju's personal encounter with one of these threats showcases a
-            contrast to the casual attitude students have developed. While on an El Estoque trip in
-            New York, Ju received one of the threatening emails from someone with the handle “Jacob
-            Jackoff.”
-          </Typography>
+  However, Junior Jillian Ju&apos;s personal encounter with one of these threats showcases a
+  contrast to the casual attitude students have developed. While on an El Estoque trip in
+  New York, Ju received one of the threatening emails from someone with the handle &ldquo;Jacob
+  Jackoff.&rdquo;
+</Typography>
+
 
           <Typography paragraph sx={italicStyle}>
             “I get email notifications for speech, so I saw the pop-up,” Ju said. “I was like, ‘Oh
@@ -188,9 +190,10 @@ export function ComponentsView() {
           </Typography>
 
           <Typography paragraph sx={italicStyle}>
-            “For AP Chinese, our teacher has to send us these emails with like, Ed puzzles for us to
-            do at home, because, she says, ‘We can't fall behind,’” Ju said.
-          </Typography>
+  &ldquo;For AP Chinese, our teacher has to send us these emails with like, Ed puzzles for us to
+  do at home, because, she says, &lsquo;We can&apos;t fall behind,&rsquo;&rdquo; Ju said.
+</Typography>
+
 
           <Typography paragraph sx={bodyStyle}>
             Despite these disruptions, Cassar appreciates the school’s approach to prioritizing
@@ -210,12 +213,13 @@ export function ComponentsView() {
             </Grid>
             <Grid item xs={12} md={7}>
               <Typography paragraph sx={italicStyle}>
-                "I do really appreciate that we consistently err on the side of caution,” Cassar
-                said. “Even though cancelling career day, for example, must have been very
-                challenging for the administration to manage, I appreciate that they’re doing their
-                best to look out for the safety of everyone at the school. I want to recognize the
-                sacrifices that this required.”
-              </Typography>
+  &quot;I do really appreciate that we consistently err on the side of caution,&rdquo; Cassar
+  said. &ldquo;Even though cancelling career day, for example, must have been very
+  challenging for the administration to manage, I appreciate that they&rsquo;re doing their
+  best to look out for the safety of everyone at the school. I want to recognize the
+  sacrifices that this required.&rdquo;
+</Typography>
+
             </Grid>
           </Grid>
 
@@ -246,10 +250,11 @@ export function ComponentsView() {
           </Typography>
 
           <Typography paragraph sx={italicStyle}>
-            “I feel like this behavior is a symptom of gun culture in America, of how we treat
-            student safety,” Ju said. “But at the same time, in our sheltered environment, we don't
-            have a great perspective on what violence actually means.”
-          </Typography>
+  &ldquo;I feel like this behavior is a symptom of gun culture in America, of how we treat
+  student safety,&rdquo; Ju said. &ldquo;But at the same time, in our sheltered environment, we don&apos;t
+  have a great perspective on what violence actually means.&rdquo;
+</Typography>
+
         </Box>
 
         {/* Contact Form */}

@@ -66,9 +66,10 @@
 
 
 
-import { HomeView } from "src/sections/home/view";
 import connect from "src/lib/db";
 import homeModel from "src/lib/modals/home";
+
+import { HomeView } from "src/sections/home/view";
 
 // ✅ Generate metadata from DB (SSG)
 export async function generateMetadata() {

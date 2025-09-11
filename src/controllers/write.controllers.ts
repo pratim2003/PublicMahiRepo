@@ -1,3 +1,4 @@
+import { NextRequest } from "next/server";
 import ArticleModel from "src/lib/modals/write";
 import { uploadImage } from "src/utils/fileupload";
 
@@ -11,7 +12,7 @@ export async function getArticle(){
     }
 }
 
-export async function createArticle(req:Request){
+export async function createArticle(req:NextRequest){
     try {
         const contentType = req.headers.get("content-type") || "";
 

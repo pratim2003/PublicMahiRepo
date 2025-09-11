@@ -26,6 +26,7 @@ export async function createHome(req:Request) : Promise<any>{
             const formData = await req.formData();
             const heading = formData.get("heading") as string;
             const body = formData.get("body") as string
+            const id = formData.get("id") as string
 
             const file = formData.get("file") as File | null;
               let savedImage = "";
@@ -34,6 +35,15 @@ export async function createHome(req:Request) : Promise<any>{
                 if (uploadResult.success && uploadResult.path) {
                   savedImage = uploadResult.path;
                 }
+            }
+            if(id){
+                const data = await homeModel.findById(id)
+                await homeModel.findByIdAndUpdate(id,{
+                heading : heading?heading:data?.heading,
+                body : body?body:data?.body,
+                image : savedImage?savedImage:data?.image
+            })
+            return {status : 200}
             }
             await homeModel.create({
                 heading,

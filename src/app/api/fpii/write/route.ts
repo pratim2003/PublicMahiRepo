@@ -1,5 +1,7 @@
 import {createArticle,getArticle} from "../../../../controllers/write.controllers"
 import connect from "src/lib/db"
+import { NextRequest,NextResponse } from "next/server"
+
 
 export async function GET(){
     await connect()
@@ -29,7 +31,7 @@ export async function GET(){
     }
 }
 
-export async function POST(req:Request){
+export async function POST(req:NextRequest){
     await connect()
     try {
         const data = await createArticle(req)
@@ -57,3 +59,5 @@ export async function POST(req:Request){
         })
     }
 }
+
+

@@ -2,11 +2,11 @@ import connect from 'src/lib/db';
 import { CONFIG } from 'src/config-global';
 import ArticleModel from 'src/lib/modals/write';
 
-import { ComponentsView } from 'src/sections/_examples/view';
+import { ComponentsView } from 'src/sections/photojournalism/view';
 
 // ----------------------------------------------------------------------
 
-export const metadata = { title: `All components | MUI - ${CONFIG.appName}` };
+export const metadata = { title: `journalism | MUI - ${CONFIG.appName}` };
 
 export default async function Page() {
   await connect();

@@ -163,7 +163,7 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
             </Typography>
 
             {/* Contact Form */}
-            <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+            {/* <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
               Contact Maahi
             </Typography>
 
@@ -259,7 +259,7 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
               >
                 {loading ? 'Sending...' : 'Submit'}
               </Button>
-            </form>
+            </form> */}
 
             {status && (
               <Typography

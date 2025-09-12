@@ -192,7 +192,7 @@ import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import { useTheme } from '@mui/material/styles';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
+import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -261,140 +261,80 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
         position: 'relative',
         bgcolor: '#000', // Set the background to black
         color: '#fff', // Set default text color to white
-        py: { xs: 6, md: 10 },
+        // py: { xs: 6, md: 10 },
+        px: { xs: 2, md: 10 },
         ...sx,
       }}
     >
-      <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.2)' }} />
+      {/* <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.2)' }} /> */}
 
       <Container
         sx={{
           pb: 5,
-          pt: 10,
+          // pt: 10,
+          px: { xs: 2, md: 10 },
           textAlign: 'center',
           [theme.breakpoints.up(layoutQuery)]: { textAlign: 'unset' },
         }}
       >
         <Grid container spacing={6} justifyContent="center" alignItems="flex-start">
-          <Grid container spacing={6} justifyContent="center" alignItems="flex-start">
-            {/* Contact Form Grid Item */}
-            <Grid xs={12}>
-              <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#fff' }}>
-                Contact Maahi
-              </Typography>
+          {/* Contact Form */}
+          <Box sx={{ mt: 8 }}>
+            <Typography
+              variant="h5"
+              gutterBottom
+              sx={{
+                fontFamily: "'Merriweather', serif",
+                fontWeight: 600,
+                mb: 3,
+              }}
+            >
+              Contact Maahi
+            </Typography>
 
-              <form onSubmit={handleSubmit}>
-                <Grid container spacing={2}>
-                  <Grid xs={12} sm={6}>
-                    <TextField
-                      name="firstName"
-                      label="First name"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      fullWidth
-                      required
-                      variant="outlined"
-                      sx={{
-                        input: { color: '#fff' },
-                        label: { color: 'rgba(255, 255, 255, 0.7)' },
-                        '& .MuiOutlinedInput-root fieldset': { borderColor: '#fff' },
-                        '& .MuiOutlinedInput-root:hover fieldset': { borderColor: '#fff' },
-                        '& .MuiOutlinedInput-root.Mui-focused fieldset': { borderColor: '#fff' },
-                      }}
-                    />
-                  </Grid>
-                  <Grid xs={12} sm={6}>
-                    <TextField
-                      name="lastName"
-                      label="Last name"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      fullWidth
-                      required
-                      variant="outlined"
-                      sx={{
-                        input: { color: '#fff' },
-                        label: { color: 'rgba(255, 255, 255, 0.7)' },
-                        '& .MuiOutlinedInput-root fieldset': { borderColor: '#fff' },
-                        '& .MuiOutlinedInput-root:hover fieldset': { borderColor: '#fff' },
-                        '& .MuiOutlinedInput-root.Mui-focused fieldset': { borderColor: '#fff' },
-                      }}
-                    />
-                  </Grid>
-                  <Grid xs={12}>
-                    <TextField
-                      name="email"
-                      label="Email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      fullWidth
-                      required
-                      variant="outlined"
-                      sx={{
-                        input: { color: '#fff' },
-                        label: { color: 'rgba(255, 255, 255, 0.7)' },
-                        '& .MuiOutlinedInput-root fieldset': { borderColor: '#fff' },
-                        '& .MuiOutlinedInput-root:hover fieldset': { borderColor: '#fff' },
-                        '& .MuiOutlinedInput-root.Mui-focused fieldset': { borderColor: '#fff' },
-                      }}
-                    />
-                  </Grid>
-                  <Grid xs={12}>
-                    <TextField
-                      name="message"
-                      label="Message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      fullWidth
-                      multiline
-                      rows={3}
-                      required
-                      variant="outlined"
-                      sx={{
-                        textarea: { color: '#fff' },
-                        label: { color: 'rgba(255, 255, 255, 0.7)' },
-                        '& .MuiOutlinedInput-root fieldset': { borderColor: '#fff' },
-                        '& .MuiOutlinedInput-root:hover fieldset': { borderColor: '#fff' },
-                        '& .MuiOutlinedInput-root.Mui-focused fieldset': { borderColor: '#fff' },
-                      }}
-                    />
-                  </Grid>
-                </Grid>
-
-                <Button
-                  type="submit"
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  label="First name"
                   variant="outlined"
-                  disabled={loading}
-                  sx={{
-                    mt: 3,
-                    px: 4,
-                    py: 1,
-                    borderRadius: '30px',
-                    borderColor: '#fff',
-                    color: '#fff',
-                    textTransform: 'none',
-                    fontWeight: 500,
-                    '&:hover': {
-                      backgroundColor: '#fff',
-                      color: '#000',
-                      borderColor: '#fff',
-                    },
-                  }}
-                >
-                  {loading ? 'Sending...' : 'Submit'}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  label="Last name"
+                  variant="outlined"
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  label="Email"
+                  type="email"
+                  variant="outlined"
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  label="Message"
+                  multiline
+                  rows={4}
+                  variant="outlined"
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Button variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>
+                  Submit
                 </Button>
-              </form>
-
-              {status && (
-                <Typography
-                  sx={{ mt: 2, color: status.includes('success') ? 'lightgreen' : 'red' }}
-                >
-                  {status}
-                </Typography>
-              )}
+              </Grid>
             </Grid>
-          </Grid>
+          </Box>
         </Grid>
 
         <Typography variant="body2" sx={{ mt: 10 }}>

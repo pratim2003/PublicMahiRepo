@@ -342,7 +342,7 @@ export function ComponentsView({ homeData }: { homeData: any }) {
         </Box>
 
         {/* Contact Form */}
-        <Box sx={{ mt: 8 }}>
+        {/* <Box sx={{ mt: 8 }}>
           <Typography
             variant="h5"
             gutterBottom
@@ -397,7 +397,7 @@ export function ComponentsView({ homeData }: { homeData: any }) {
               </Button>
             </Grid>
           </Grid>
-        </Box>
+        </Box> */}
       </Container>
     </Box>
   );

@@ -26,6 +26,7 @@ import { SignInButton } from '../components/sign-in-button';
 import { SettingsButton } from '../components/settings-button';
 
 import type { NavMainProps } from './nav/types';
+import { Typography } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -86,6 +87,7 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
                 />
                 {/* -- Logo -- */}
                 <Logo />
+                <Typography sx={{pl:'10px', fontSize:'13px'}}>Maahi Dev's Portfolio</Typography>
               </>
             ),
             rightArea: (
@@ -125,9 +127,7 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
       /** **************************************
        * Footer
        *************************************** */
-      footerSection={
-        <Footer layoutQuery={layoutQuery} />
-      }
+      footerSection={<Footer layoutQuery={layoutQuery} />}
       /** **************************************
        * Style
        *************************************** */

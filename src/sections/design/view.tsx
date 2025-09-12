@@ -22,7 +22,7 @@ export function DesignView({ broadcastData }: { broadcastData: any[] }) {
 
   return (
     <Box sx={{ bgcolor: 'black', color: 'white', py: 6 }}>
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         {/* Header */}
         <MotionContainer sx={{ textAlign: 'center', mb: 6 }}>
           <m.div variants={varFade().inUp}>
@@ -67,9 +67,9 @@ export function DesignView({ broadcastData }: { broadcastData: any[] }) {
                   width: '100%',
                   height: 400, // ✅ Fixed height for uniform size
                   objectFit: 'cover', // ✅ crops the image without distortion
-                  borderRadius: 2,
-                  boxShadow: 3,
-                  mb: 2,
+                  borderRadius: 1,
+                  boxShadow: 1,
+                  mb: 1,
                 }}
               />
               <Typography

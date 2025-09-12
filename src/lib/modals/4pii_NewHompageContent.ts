@@ -1,6 +1,6 @@
-import type { Model, Document, Schema as MongooseSchema } from "mongoose";
+import type { Model, Document, Schema as MongooseSchema } from 'mongoose';
 
-import mongoose, { models } from "mongoose";
+import mongoose, { models } from 'mongoose';
 
 // ---------------- SCHEMAS ----------------
 
@@ -71,7 +71,7 @@ const fourthObjectSchema: MongooseSchema = new mongoose.Schema({
         {
           head: { type: String },
           subhead: { type: String },
-          id: { type: mongoose.Schema.Types.ObjectId, ref: "fifthExtraData" },
+          id: { type: mongoose.Schema.Types.ObjectId, ref: 'fifthExtraData' },
           color: { type: String },
         },
       ],
@@ -111,18 +111,20 @@ const fifthObjectSchema: MongooseSchema = new mongoose.Schema({
           head: { type: String },
           subhead: { type: String },
           image: { type: String },
-          id: { type: mongoose.Schema.Types.ObjectId, ref: "fifthExtraData" },
+          id: { type: mongoose.Schema.Types.ObjectId, ref: 'fifthExtraData' },
           color: { type: String },
         },
       ],
-      whyChoose4Pillars: [
-        { head: { type: String }, subhead: { type: String } },
-      ],
+      whyChoose4Pillars: [{ head: { type: String }, subhead: { type: String } }],
       benefits: [{ head: { type: String }, subhead: { type: String } }],
       Vision: { type: String },
       number: { type: String },
       technologies: [
-        { title: { type: String }, subhead: { type: String }, id: { type: mongoose.Schema.Types.ObjectId } },
+        {
+          title: { type: String },
+          subhead: { type: String },
+          id: { type: mongoose.Schema.Types.ObjectId },
+        },
       ],
     },
   ],
@@ -140,9 +142,7 @@ const fifthExtraDataSchema: MongooseSchema = new mongoose.Schema({
   content: { type: String },
   models: {
     title: { type: String },
-    heading: [
-      { title: { type: String }, content: { type: String } },
-    ],
+    heading: [{ title: { type: String }, content: { type: String } }],
   },
   advantages: [{ title: { type: String } }],
   summary: { type: String },
@@ -205,7 +205,7 @@ const fiftthObjectSchema: MongooseSchema = new mongoose.Schema({
 
 const homePageSchema: MongooseSchema = new mongoose.Schema({
   floatingImage: [floatingImageItemSchema],
-   secondObject : secondObjectSchema,
+  secondObject: secondObjectSchema,
   thirdObject: thirdObjectSchema,
   fourthObject: fourthObjectSchema,
   fipthObject: fifthObjectSchema,
@@ -236,29 +236,28 @@ const extraImagePdfSchema: MongooseSchema = new mongoose.Schema({
   image: { type: String, required: true },
 });
 
-interface DemoImage extends Document{
-  image : string
+interface DemoImage extends Document {
+  image: string;
 }
 
-const DemoImageShema : MongooseSchema<DemoImage> = new mongoose.Schema({
-  image : String
-})
+const DemoImageShema: MongooseSchema<DemoImage> = new mongoose.Schema({
+  image: String,
+});
 
 // ---------------- MODELS ----------------
 
-const homePageModel = models["4piiHomePageData"] || mongoose.model("4piiHomePageData", homePageSchema);
-const fifthModel = models.fifthobj || mongoose.model("fifthobj", fiftthObjectSchema);
-const fifthExtradataModel = models.fifthExtraData || mongoose.model("fifthExtraData", fifthExtraDataSchema);
-const extraImage = models.extraImage || mongoose.model("extraImage", extraImagePdfSchema);
-const ongoing: Model<ongoingObject> = models.ongoing as mongoose.Model<ongoingObject> || mongoose.model<ongoingObject>("ongoing", ongoingSchema);
-const DemoImageModel : Model<DemoImage> = models.DemoImage as mongoose.Model<DemoImage> || mongoose.model<DemoImage>("DemoImage",DemoImageShema)
+const homePageModel =
+  models['4piiHomePageData'] || mongoose.model('4piiHomePageData', homePageSchema);
+const fifthModel = models.fifthobj || mongoose.model('fifthobj', fiftthObjectSchema);
+const fifthExtradataModel =
+  models.fifthExtraData || mongoose.model('fifthExtraData', fifthExtraDataSchema);
+const extraImage = models.extraImage || mongoose.model('extraImage', extraImagePdfSchema);
+const ongoing: Model<ongoingObject> =
+  (models.ongoing as mongoose.Model<ongoingObject>) ||
+  mongoose.model<ongoingObject>('ongoing', ongoingSchema);
+const DemoImageModel: Model<DemoImage> =
+  (models.DemoImage as mongoose.Model<DemoImage>) ||
+  mongoose.model<DemoImage>('DemoImage', DemoImageShema);
 // ---------------- EXPORTS ----------------
 
-export {
-  ongoing,
-  extraImage,
-  fifthModel,
-  homePageModel,
-  DemoImageModel,
-  fifthExtradataModel,
-};
+export { ongoing, extraImage, fifthModel, homePageModel, DemoImageModel, fifthExtradataModel };

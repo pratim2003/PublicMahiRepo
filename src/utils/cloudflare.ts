@@ -1,7 +1,7 @@
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 const s3Client = new S3Client({
-  region: "auto",
+  region: 'auto',
   endpoint: process.env.R2_ENDPOINT,
   credentials: {
     accessKeyId: process.env.R2_ACCESS_KEY!,
@@ -20,7 +20,7 @@ export async function uploadToR2(file: File): Promise<string> {
     Key: fileName,
     Body: buffer,
     ContentType: file.type,
-    ACL: "public-read", // optional, for public URL
+    ACL: 'public-read', // optional, for public URL
   });
 
   await s3Client.send(command);

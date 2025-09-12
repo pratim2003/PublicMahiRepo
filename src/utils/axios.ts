@@ -56,5 +56,5 @@ export const endpoints = {
     list: '/api/product/list',
     details: '/api/product/details',
     search: '/api/product/search',
-  }
+  },
 };

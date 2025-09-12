@@ -1,7 +1,7 @@
-import type mongoose from "mongoose";
-import type { Document } from "mongoose";
+import type mongoose from 'mongoose';
+import type { Document } from 'mongoose';
 
-import { model, Schema, models } from "mongoose";
+import { model, Schema, models } from 'mongoose';
 
 interface Article extends Document {
   title: string;
@@ -24,7 +24,6 @@ const articleSchema: Schema<Article> = new Schema<Article>({
 });
 
 const ArticleModel =
-  (models.Article as mongoose.Model<Article>) ||
-  model<Article>("Article", articleSchema);
+  (models.Article as mongoose.Model<Article>) || model<Article>('Article', articleSchema);
 
 export default ArticleModel;

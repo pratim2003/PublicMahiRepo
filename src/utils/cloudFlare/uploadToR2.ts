@@ -1,4 +1,3 @@
-
 // // const { PutObjectCommand } = require("@aws-sdk/client-s3");
 // // const r2 = require("./r2Client"); // from earlier R2 config
 // // const path = require("path");
@@ -20,8 +19,6 @@
 // // };
 
 // // module.exports = uploadToR2;
-
-
 
 // // // utils/cloudFlare/uploadToR2.js
 // // const { PutObjectCommand } = require("@aws-sdk/client-s3");
@@ -52,7 +49,7 @@
 
 // const uploadToR2 = async (file, folderPrefix = '') => {
 //     const bucketName = process.env.CLOUDFLARE_BUCKET_NAME;
-    
+
 //     const key = `${folderPrefix}${Date.now()}-4pii-${file.originalname}`; // Example key naming
 
 //     const uploadParams = {
@@ -73,7 +70,6 @@
 // };
 
 // module.exports = uploadToR2;
-
 
 // utils/cloudFlare/uploadToR2.js
 // const { PutObjectCommand } = require("@aws-sdk/client-s3");
@@ -133,7 +129,6 @@
 
 // module.exports = uploadFolderToR2;
 
-
 // utils/cloudflare/uploadFolderToR2.js
 
 // const fs = require('fs');
@@ -184,7 +179,6 @@
 
 // module.exports = uploadFolderToR2;
 
-
 // const fs = require('fs');
 // const path = require('path');
 // const mime = require('mime-types');
@@ -194,7 +188,7 @@
 // const uploadFolderToR2 = async (localFolder, r2Prefix = 'json/') => {
 //   try {
 //     console.log(`📂 Local folder to upload: ${localFolder}`);
-    
+
 //     const files = fs.readdirSync(localFolder);
 //     console.log(`📄 Files to upload:`, files);
 
@@ -233,8 +227,6 @@
 // };
 
 // module.exports = uploadFolderToR2;
-
-
 
 // const fs = require('fs');
 // const path = require('path');
@@ -279,7 +271,6 @@
 // };
 
 // module.exports = uploadFolderToR2;
-
 
 // const fs = require('fs');
 // const path = require('path');
@@ -331,9 +322,9 @@
 
 // module.exports = uploadFolderToR2;
 
-import { PutObjectCommand } from "@aws-sdk/client-s3";
+import { PutObjectCommand } from '@aws-sdk/client-s3';
 
-import r2Client from "./r2Client";
+import r2Client from './r2Client';
 
 // Define the type for file (similar to Multer's File)
 interface UploadFile {
@@ -342,20 +333,15 @@ interface UploadFile {
   mimetype?: string;
 }
 
-const uploadToR2 = async (
-  file: UploadFile,
-  folderPrefix: string = ""
-): Promise<string> => {
+const uploadToR2 = async (file: UploadFile, folderPrefix: string = ''): Promise<string> => {
   const bucketName = process.env.CLOUDFLARE_BUCKET_NAME;
 
   if (!bucketName) {
-    throw new Error("CLOUDFLARE_BUCKET_NAME is not defined in environment variables");
+    throw new Error('CLOUDFLARE_BUCKET_NAME is not defined in environment variables');
   }
 
   // ✅ Ensure safe filename
-  const safeFileName = file.originalname
-    .replace(/\s+/g, "_")
-    .replace(/[^\w.-]/g, "");
+  const safeFileName = file.originalname.replace(/\s+/g, '_').replace(/[^\w.-]/g, '');
 
   const key = `${folderPrefix}${Date.now()}-4pii-${safeFileName}`;
 
@@ -363,7 +349,7 @@ const uploadToR2 = async (
     Bucket: bucketName,
     Key: key,
     Body: file.buffer,
-    ContentType: file.mimetype || "application/octet-stream",
+    ContentType: file.mimetype || 'application/octet-stream',
   };
 
   await r2Client.send(new PutObjectCommand(uploadParams));

@@ -1,7 +1,6 @@
-import type { Model, Document } from "mongoose";
+import type { Model, Document } from 'mongoose';
 
-import mongoose, { Schema } from "mongoose";
-
+import mongoose, { Schema } from 'mongoose';
 
 export interface DesignEntry extends Document {
   containt: string;
@@ -11,18 +10,16 @@ export interface DesignEntry extends Document {
   image?: string;
 }
 
-
 const DesignSchema = new Schema<DesignEntry>(
   {
     containt: { type: String, required: true },
     heading: { type: String, required: true },
     subHead1: { type: String },
     subHead2: { type: String },
-    image : String
+    image: String,
   },
-  { timestamps: true, collection: "design" } 
+  { timestamps: true, collection: 'design' }
 );
 
-
 export const DesignModel: Model<DesignEntry> =
-  mongoose.models.Design || mongoose.model<DesignEntry>("Design", DesignSchema);
+  mongoose.models.Design || mongoose.model<DesignEntry>('Design', DesignSchema);

@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { m } from 'framer-motion';
 
 import { Box, Grid, Button, Container, TextField, Typography } from '@mui/material';
@@ -8,7 +9,7 @@ import { varFade, MotionContainer } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
-export function ComponentsView() {
+export function ComponentsView({ homeData }: { homeData: any }) {
   return (
     <Box sx={{ bgcolor: 'black', color: 'white', py: 6 }}>
       <Container maxWidth="md">
@@ -39,7 +40,7 @@ export function ComponentsView() {
                 mb: 1,
               }}
             >
-              MVHS Students Desensitized By Repeating Email Threats
+              {homeData[0]?.title}
             </Typography>
           </m.div>
 
@@ -52,25 +53,25 @@ export function ComponentsView() {
               textAlign: 'left',
             }}
           >
-            Fifth email threat targets MVHS
+            {homeData[0]?.subtitle}
           </Typography>
 
           <Typography
             sx={{
               fontFamily: "'Roboto Slab', serif",
               fontSize: '0.95rem',
-              
+
               color: '#bbb',
               textAlign: 'left',
             }}
           >
-            By: Maahi Dev & Tala Grimaldi
+            {homeData[0]?.authors?.join(' , ')}
           </Typography>
         </MotionContainer>
 
         {/* Article Body */}
-        <Box sx={{ fontFamily: "'Roboto Slab', serif" }}>
-          <Typography
+        {/* <Box sx={{ fontFamily: "'Roboto Slab', serif" }}> */}
+        {/* <Typography
             paragraph
             sx={{
               fontFamily: "'Roboto Slab', serif",
@@ -90,10 +91,10 @@ export function ComponentsView() {
             drawing investigations from the Santa Clara County Sheriff’s Department and Federal Law
             Enforcement. What initially sparked confusion has now, through repeated incidents,
             turned into a reaction more like celebration.
-          </Typography>
+          </Typography> */}
 
-          {/* Image 1 */}
-          <Box sx={{ my: 4 }}>
+        {/* Image 1 */}
+        {/* <Box sx={{ my: 4 }}>
             <img
               src="/assets/article/email-threats.png"
               alt="Email Threats"
@@ -198,10 +199,10 @@ export function ComponentsView() {
           <Typography paragraph sx={bodyStyle}>
             Despite these disruptions, Cassar appreciates the school’s approach to prioritizing
             safety, even in undesirable circumstances.
-          </Typography>
+          </Typography> */}
 
-          {/* Image 2 */}
-          <Grid container spacing={2}>
+        {/* Image 2 */}
+        {/* <Grid container spacing={2}>
             <Grid item xs={12} md={5}>
               <Box sx={{ my: 4 }}>
                 <img
@@ -253,8 +254,91 @@ export function ComponentsView() {
   &ldquo;I feel like this behavior is a symptom of gun culture in America, of how we treat
   student safety,&rdquo; Ju said. &ldquo;But at the same time, in our sheltered environment, we don&apos;t
   have a great perspective on what violence actually means.&rdquo;
-</Typography>
+</Typography> */}
+        {}
+        {/* </Box> */}
+        <Box
+          sx={{
+            fontFamily: "'Roboto Slab', serif",
+            fontSize: '1.05rem',
+            lineHeight: 1.9,
+            '& p': { marginBottom: '1.5rem' }, // style <p> like Typography paragraphs
+          }}
+        >
+          {homeData[0]?.body.split('</p>').map((chunk: any, index: number) => (
+            <React.Fragment key={index}>
+              <div dangerouslySetInnerHTML={{ __html: `${chunk}</p>` }} />
 
+              {/* First image after 2nd paragraph */}
+              {index === 1 && homeData[0]?.images[0] && (
+                <Box sx={{ textAlign: 'center', my: 6 }}>
+                  <img
+                    src={`/${homeData[0]?.images[0]}`}
+                    alt="Threat Timeline"
+                    style={{
+                      maxWidth: '100%', // full-width for first image
+                      borderRadius: '12px',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                    }}
+                  />
+                  <Box
+                    component="figcaption"
+                    sx={{
+                      fontSize: '0.85rem',
+                      color: 'gray',
+                      mt: 1,
+                      fontStyle: 'italic',
+                    }}
+                  >
+                    2024–2025 Email Threat Timeline
+                  </Box>
+                </Box>
+              )}
+
+              {/* Second image after 8th paragraph */}
+              {index === 7 && homeData[0]?.images[1] && (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    my: 6,
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: '100%',
+                      maxWidth: '800px', // keeps it big but not too wide
+                      backgroundColor: '#f9f9f9',
+                      borderRadius: '16px',
+                      boxShadow: '0 6px 18px rgba(0,0,0,0.2)',
+                      p: 2,
+                    }}
+                  >
+                    <img
+                      src={`/${homeData[0]?.images[1]}`}
+                      alt="School Safety Statistics"
+                      style={{
+                        width: '100%',
+                        borderRadius: '12px',
+                      }}
+                    />
+                    <Box
+                      component="figcaption"
+                      sx={{
+                        fontSize: '0.85rem',
+                        color: 'gray',
+                        mt: 1,
+                        textAlign: 'center',
+                        fontStyle: 'italic',
+                      }}
+                    >
+                      Source: National Center for Education Statistics
+                    </Box>
+                  </Box>
+                </Box>
+              )}
+            </React.Fragment>
+          ))}
         </Box>
 
         {/* Contact Form */}

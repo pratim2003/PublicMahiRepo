@@ -1,7 +1,7 @@
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
-const uploadDir = path.join(process.cwd(), "public", "audio");
+const uploadDir = path.join(process.cwd(), 'public', 'audio');
 
 export async function uploadAudio(file: File) {
   try {
@@ -10,12 +10,12 @@ export async function uploadAudio(file: File) {
     }
 
     if (!file) {
-      throw new Error("No file uploaded");
+      throw new Error('No file uploaded');
     }
 
-    const allowedTypes = ["audio/mpeg", "audio/wav", "audio/mp3"];
+    const allowedTypes = ['audio/mpeg', 'audio/wav', 'audio/mp3'];
     if (!allowedTypes.includes(file.type)) {
-      throw new Error("Unsupported audio type");
+      throw new Error('Unsupported audio type');
     }
 
     const arrayBuffer = await file.arrayBuffer();
@@ -23,7 +23,7 @@ export async function uploadAudio(file: File) {
 
     const maxSize = 20 * 1024 * 1024; // 20 MB max
     if (buffer.length > maxSize) {
-      throw new Error("File size exceeds 20 MB");
+      throw new Error('File size exceeds 20 MB');
     }
 
     const fileName = `${Date.now()}-${file.name}`;
@@ -38,7 +38,7 @@ export async function uploadAudio(file: File) {
   } catch (error: any) {
     return {
       success: false,
-      message: error.message || "Audio upload failed",
+      message: error.message || 'Audio upload failed',
     };
   }
 }

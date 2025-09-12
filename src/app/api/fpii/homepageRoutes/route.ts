@@ -1,40 +1,39 @@
-
-
-import connect from "src/lib/db";
-import {handleGetData , 
-    // handleCreateNewData
-} 
-    from "src/controllers/4pii_newHomepageHandler"
+import connect from 'src/lib/db';
+import {
+  handleGetData,
+  // handleCreateNewData
+} from 'src/controllers/4pii_newHomepageHandler';
 
 // const uploadDir = path.join(process.cwd(),"public","upload")
 
-export async function GET (req:Request) : Promise<Response>{
-    await connect()
-    try {
-        const data = await handleGetData()
-        return Response.json({homePageContent : data.homePageContent},{
-            status : 200,
-        })
-    } catch (error) {
-        console.log(error)
-        return Response.json({
-            Message : "error for getting hompage data",
-            error
-        },
-    {
-        status : 500
-    })
-    }
+export async function GET(req: Request): Promise<Response> {
+  await connect();
+  try {
+    const data = await handleGetData();
+    return Response.json(
+      { homePageContent: data.homePageContent },
+      {
+        status: 200,
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    return Response.json(
+      {
+        Message: 'error for getting hompage data',
+        error,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 }
-
 
 // export async function POST(req: Request): Promise<Response> {
 //   await connect();
 //   return handleCreateNewData(req); // 👈 controller call
 // }
-
-
-
 
 // export async function POST(req : Request){
 //     await connect()

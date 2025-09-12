@@ -1,6 +1,3 @@
-
-
-
 // // utils/cloudFlare/r2Client.js
 // const { S3Client } = require("@aws-sdk/client-s3");
 // const dotenv = require("dotenv");
@@ -40,7 +37,7 @@
 
 // module.exports = r2Client;
 
-import { S3Client } from "@aws-sdk/client-s3";
+import { S3Client } from '@aws-sdk/client-s3';
 // import dotenv from "dotenv";
 
 // dotenv.config(); // Load environment variables
@@ -54,7 +51,7 @@ import { S3Client } from "@aws-sdk/client-s3";
 // console.log("--- End R2 Client Configuration Check ---");
 
 const r2Client = new S3Client({
-  region: "auto",
+  region: 'auto',
   endpoint: `https://${process.env.CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com`,
   credentials: {
     accessKeyId: process.env.CLOUDFLARE_ACCESS_KEY_ID as string,

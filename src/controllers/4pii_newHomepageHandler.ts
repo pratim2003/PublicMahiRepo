@@ -1,7 +1,6 @@
-import {homePageModel } from "../lib/modals/4pii_NewHompageContent"
+import { homePageModel } from '../lib/modals/4pii_NewHompageContent';
 // const basepath = process.env.BASE_PATH;
 // const basepath = "https://pw73zddd-4072.inc1.devtunnels.ms/api"
-
 
 // export  const createExtraImage = async(req,res)=>{
 //     try {
@@ -18,18 +17,15 @@ import {homePageModel } from "../lib/modals/4pii_NewHompageContent"
 //     }
 // }
 
-
-
-
-export  const handleGetData = async(): Promise<any> =>{
-    try {
-        const homePageContent = await homePageModel.find({})
-        return {homePageContent,status : 200}
-    } catch (error) {
-        console.error("Error saving data:", error);
-        return{error,status : 500}
-    }
-}
+export const handleGetData = async (): Promise<any> => {
+  try {
+    const homePageContent = await homePageModel.find({});
+    return { homePageContent, status: 200 };
+  } catch (error) {
+    console.error('Error saving data:', error);
+    return { error, status: 500 };
+  }
+};
 
 // export async function handleCreateNewData(req: Request) {
 //   await connect();
@@ -84,8 +80,6 @@ export  const handleGetData = async(): Promise<any> =>{
 //   }
 // }
 
-
-
 // export const addDemoData = async (req: Request) => {
 //   await connect();
 
@@ -135,7 +129,6 @@ export  const handleGetData = async(): Promise<any> =>{
 //     );
 //   }
 // };
-
 
 // export  const getExtraData = async(req,res)=>{
 //     try {
@@ -397,7 +390,7 @@ export  const handleGetData = async(): Promise<any> =>{
 //                 let thrdObj = data.thirdObject
 //                 let title = thrdObj.titles
 //                 let ttle = title.filter((obj)=>(
-//                     obj._id == body.titleId 
+//                     obj._id == body.titleId
 //                 ))
 //                 ttle[0].image.url = `${basepath}/uploads/${req.files[0].filename}`
 //                 title = title.map((obj)=>(
@@ -412,7 +405,7 @@ export  const handleGetData = async(): Promise<any> =>{
 //                 let thrdObj = data.fourthObject
 //                 let title = thrdObj.titles
 //                 let ttle = title.filter((obj)=>(
-//                     obj._id == body.titleId 
+//                     obj._id == body.titleId
 //                 ))
 //                 ttle[0].image = `${basepath}/uploads/${req.files[0].filename}`
 //                 title = title.map((obj)=>(
@@ -425,7 +418,7 @@ export  const handleGetData = async(): Promise<any> =>{
 //                 let thrdObj = data.fourthObject
 //                 let title = thrdObj.titles
 //                 let ttle = title.filter((obj)=>(
-//                     obj._id == body.titleId 
+//                     obj._id == body.titleId
 //                 ))
 //                 ttle[0].serviceimage1 = `${basepath}/uploads/${req.files[0].filename}`
 //                 ttle[0].serviceimage2 = `${basepath}/uploads/${req.files[1].filename}`
@@ -445,7 +438,7 @@ export  const handleGetData = async(): Promise<any> =>{
 //                 let thrdObj = data.fipthObject
 //                 let title = thrdObj.titles
 //                 let ttle = title.filter((obj)=>(
-//                     obj._id == body.titleId 
+//                     obj._id == body.titleId
 //                 ))
 //                 ttle[0].image.url = `${basepath}/uploads/${req.files[0].filename}`
 //                 title = title.map((obj)=>(
@@ -459,7 +452,7 @@ export  const handleGetData = async(): Promise<any> =>{
 //                 let thrdObj = data.fipthObject
 //                 let title = thrdObj.titles
 //                 let ttle = title.filter((obj)=>(
-//                     obj._id == body.titleId 
+//                     obj._id == body.titleId
 //                 ))[0]
 //                 let keyF = ttle.keyFeatures.filter(key=>key._id==body.keyFeaturesId)[0]
 //                 keyF.image = `${basepath}/uploads/${req.files[0].filename}`
@@ -488,7 +481,7 @@ export  const handleGetData = async(): Promise<any> =>{
 //                 let thrdObj = data.sevenObject
 //                 let title = thrdObj.titles
 //                 let ttle = title.filter((obj)=>(
-//                     obj._id == body.titleId 
+//                     obj._id == body.titleId
 //                 ))
 //                 ttle[0].image = `${basepath}/uploads/${req.files[0].filename}`
 //                 title = title.map((obj)=>(
@@ -508,7 +501,7 @@ export  const handleGetData = async(): Promise<any> =>{
 //                 let sxthObj = data.sixObject
 //                 let title = sxthObj.titles
 //                 let ttle = title.filter((obj)=>(
-//                     obj._id == body.sixObjectTitleId 
+//                     obj._id == body.sixObjectTitleId
 //                 ))
 //                 ttle[0].image = `${basepath}/uploads/${req.files[0].filename}`
 //                 title = title.map((obj)=>(
@@ -522,7 +515,7 @@ export  const handleGetData = async(): Promise<any> =>{
 //                 const data = await homePageModel.findById(body.homeContentId)
 //                 let eightObj = data.eightObject
 //                 let eghtObj = eightObj.filter((obj)=>(
-//                     body.eightObjectId == obj._id 
+//                     body.eightObjectId == obj._id
 //                 ))
 //                 eghtObj[0].image = `${basepath}/uploads/${req.files[0].filename}`
 
@@ -532,7 +525,7 @@ export  const handleGetData = async(): Promise<any> =>{
 //                 await homePageModel.findByIdAndUpdate(body.homeContentId , {eightObject : eightObj})
 //             }
 //         }
-        
+
 //         if(body.homeContent){
 //             // const homedata = await homePageModel.create({
 //             //     floatingImage: body.homeContent.floatingImage,
@@ -574,7 +567,7 @@ export  const handleGetData = async(): Promise<any> =>{
 //     try {
 //         const {...body} = req.body
 //         let data = await ongoing.create(body)
-//         if(req.files?.image?.[0]){ 
+//         if(req.files?.image?.[0]){
 //             data.image = `${basepath}/uploads/${req.files.image[0].filename}`
 //             await data.save({validateBeforeSave : false})
 //         }

@@ -64,23 +64,21 @@
 //   return <HomeView homeData={homeData} />;
 // }
 
+import connect from 'src/lib/db';
+import homeModel from 'src/lib/modals/home';
 
-
-import connect from "src/lib/db";
-import homeModel from "src/lib/modals/home";
-
-import { HomeView } from "src/sections/home/view";
+import { HomeView } from 'src/sections/home/view';
 
 // ✅ Generate metadata from DB (SSG)
-export async function generateMetadata() {
-  await connect();
-  const data = await homeModel.findOne();
+// export async function generateMetadata() {
+//   await connect();
+//   const data = await homeModel.findOne();
 
-  return {
-    title: data?.heading || "My App",
-    description: data?.body || "Static homepage from MongoDB",
-  };
-}
+//   return {
+//     title: data?.heading || "My App",
+//     description: data?.body || "Static homepage from MongoDB",
+//   };
+// }
 
 // ✅ Build-time static generation
 export const revalidate = false; // no revalidation, true static build

@@ -1,6 +1,5 @@
 // 'use client';
 
-
 // import { BackToTop } from 'src/components/animate/back-to-top';
 // import { ScrollProgress, useScrollProgress } from 'src/components/animate/scroll-progress';
 
@@ -69,7 +68,7 @@ export function HomeView({ homeData }: { homeData: any }) {
         <img
           src={`/${homeData.image}`} // image is served from /public/upload
           alt="Home"
-          style={{ maxWidth: "300px", borderRadius: "8px" }}
+          style={{ maxWidth: '300px', borderRadius: '8px' }}
         />
       )}
     </div>

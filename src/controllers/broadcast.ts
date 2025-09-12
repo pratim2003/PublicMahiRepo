@@ -1,17 +1,16 @@
-import { uploadAudio } from "src/utils/audioUpload";
+import { uploadAudio } from 'src/utils/audioUpload';
 
-import { broadcatModel } from "src/lib/modals/broadcast";
+import { broadcatModel } from 'src/lib/modals/broadcast';
 
-export async function broadcastController(req:Request) : Promise<any> {
-  const formData = await req.formData()
-  const containt = formData.get("containt") as string;
-  const heading = formData.get("heading") as string;
-  const subHead1 = (formData.get("subHead1") as string) || "";
-  const subHead2 = (formData.get("subHead2") as string) || "";
+export async function broadcastController(req: Request): Promise<any> {
+  const formData = await req.formData();
+  const containt = formData.get('containt') as string;
+  const heading = formData.get('heading') as string;
+  const subHead1 = (formData.get('subHead1') as string) || '';
+  const subHead2 = (formData.get('subHead2') as string) || '';
 
-
-  const file = formData.get("file") as File | null;
-  let savedImage = "";
+  const file = formData.get('file') as File | null;
+  let savedImage = '';
   if (file) {
     const uploadResult = await uploadAudio(file);
     if (uploadResult.success && uploadResult.path) {
@@ -24,12 +23,11 @@ export async function broadcastController(req:Request) : Promise<any> {
     heading,
     subHead1,
     subHead2,
-    audio: savedImage, 
+    audio: savedImage,
   });
 
   return newDesign;
 }
-
 
 // export async function getbrodcastController() {
 
@@ -37,12 +35,11 @@ export async function broadcastController(req:Request) : Promise<any> {
 //   return designs;
 // }
 
-
 export async function getbroadcastController(req: Request) {
   const designs = await broadcatModel.find().sort({ createdAt: -1 });
 
   // If you want full URL for frontend:
-  const host = process.env.HOST || "http://localhost:8082"; // your frontend URL or domain
+  const host = process.env.HOST || 'http://localhost:8082'; // your frontend URL or domain
 
   const designsWithAudioURL = designs.map((d) => ({
     ...d.toObject(),

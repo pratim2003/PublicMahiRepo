@@ -29,6 +29,7 @@ export const paths = {
   page500: '/error/500',
   components: '/components',
   journalism: '/journalism',
+  broadcast: '/broadcast',
   docs: 'https://docs.minimals.cc',
   changelog: 'https://docs.minimals.cc/changelog',
   zoneStore: 'https://mui.com/store/items/zone-landing-page/',

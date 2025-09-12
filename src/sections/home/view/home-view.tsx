@@ -277,7 +277,7 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
           <Grid item xs={12} md={5} display="flex" justifyContent="center">
             {homeData.image && (
               <Image
-                src={`/upload/${homeData.image}`}
+                src={`/${homeData.image}`}
                 alt="Home"
                 width={300}
                 height={400}

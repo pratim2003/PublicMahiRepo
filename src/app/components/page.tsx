@@ -11,7 +11,7 @@ export const metadata = { title: `All components | MUI - ${CONFIG.appName}` };
 export default async function Page() {
   await connect();
   const data = await ArticleModel.find().lean();
-  console.log(data);
+  // console.log(data);
   if (!data) {
     return <div>No home data found</div>;
   }

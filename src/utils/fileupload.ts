@@ -14,7 +14,7 @@ export async function uploadImage(file: File) {
       throw new Error('No file uploaded');
     }
 
-    const allowedTypes = ['image/png', 'image/jpeg', 'image/webp'];
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/webp', 'image/avif'];
     if (!allowedTypes.includes(file.type)) {
       throw new Error('Unsupported file type');
     }

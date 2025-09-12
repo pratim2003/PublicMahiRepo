@@ -30,6 +30,7 @@ export const paths = {
   components: '/components',
   journalism: '/journalism',
   broadcast: '/broadcast',
+  design: '/design',
   docs: 'https://docs.minimals.cc',
   changelog: 'https://docs.minimals.cc/changelog',
   zoneStore: 'https://mui.com/store/items/zone-landing-page/',

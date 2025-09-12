@@ -23,7 +23,11 @@ export const navData = [
     path: paths.broadcast,
     icon: <Iconify width={22} icon="solar:microphone-bold-duotone" />, // you can pick any icon
   },
-
+  {
+    title: 'Design',
+    path: paths.design,
+    icon: <Iconify width={22} icon="solar:microphone-bold-duotone" />, // you can pick any icon
+  },
   {
     title: 'Pages',
     path: '/pages',

@@ -5,6 +5,7 @@ import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 import { paths } from 'src/routes/paths';
@@ -15,9 +16,9 @@ import { useBoolean } from 'src/hooks/use-boolean';
 import { Logo } from 'src/components/logo';
 
 import { Main } from './main';
+import { Footer } from './footer';
 import { NavMobile } from './nav/mobile';
 import { NavDesktop } from './nav/desktop';
-import { Footer } from './footer';
 import { MenuButton } from '../components/menu-button';
 import { LayoutSection } from '../core/layout-section';
 import { HeaderSection } from '../core/header-section';
@@ -26,7 +27,6 @@ import { SignInButton } from '../components/sign-in-button';
 import { SettingsButton } from '../components/settings-button';
 
 import type { NavMainProps } from './nav/types';
-import { Typography } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -87,7 +87,9 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
                 />
                 {/* -- Logo -- */}
                 <Logo />
-                <Typography sx={{pl:'10px', fontSize:'13px'}}>Maahi Dev's Portfolio</Typography>
+                <Typography sx={{ pl: '10px', fontSize: '13px' }}>
+                  Maahi Dev&apos;s Portfolio
+                </Typography>
               </>
             ),
             rightArea: (

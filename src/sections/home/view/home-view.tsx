@@ -75,13 +75,12 @@
 //   );
 // }
 
-
-
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
-import { Box, Grid, TextField, Typography, Button, Container } from '@mui/material';
+import { useState } from 'react';
+
+import { Box, Grid, Container, Typography } from '@mui/material';
 
 type HomeData = {
   heading: string;

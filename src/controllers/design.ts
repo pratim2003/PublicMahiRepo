@@ -8,22 +8,29 @@ export async function createDesignController(req: Request): Promise<any> {
   const heading = formData.get('heading') as string;
   const subHead1 = (formData.get('subHead1') as string) || '';
   const subHead2 = (formData.get('subHead2') as string) || '';
+  const id = formData.get('id') as string;
 
-  const file = formData.get('file') as File | null;
-  let savedImage = '';
-  if (file) {
-    const uploadResult = await uploadImage(file);
-    if (uploadResult.success && uploadResult.path) {
-      savedImage = uploadResult.path;
-    }
+  const files = formData.getAll('files') as File[];
+  const uploadResults = await Promise.all(files.map((file) => (file ? uploadImage(file) : null)));
+  const savedImages: string[] = uploadResults.flatMap((res) =>
+    res && res.success && res.path ? [res.path] : []
+  );
+  if (id) {
+    const data = await DesignModel.findById(id);
+    await DesignModel.findByIdAndUpdate(id, {
+      containt: containt || data?.containt,
+      heading: heading || data?.heading,
+      subHead1: subHead1 || data?.subHead1,
+      subHead2: subHead2 || data?.subHead2,
+      images: savedImages.length > 0 ? savedImages : data?.images,
+    });
   }
-
   const newDesign = await DesignModel.create({
     containt,
     heading,
     subHead1,
     subHead2,
-    image: savedImage,
+    images: savedImages,
   });
 
   return newDesign;

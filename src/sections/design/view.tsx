@@ -9,7 +9,7 @@ import { varFade, MotionContainer } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
-export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
+export function DesignView({ broadcastData }: { broadcastData: any[] }) {
   const latest = broadcastData[0]; // show the latest broadcast first
 
   if (!latest) {
@@ -22,7 +22,7 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
 
   return (
     <Box sx={{ bgcolor: 'black', color: 'white', py: 6 }}>
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         {/* Header */}
         <MotionContainer sx={{ textAlign: 'center', mb: 6 }}>
           <m.div variants={varFade().inUp}>
@@ -36,39 +36,9 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
                 letterSpacing: 1,
               }}
             >
-              {latest.heading}
+              {latest?.heading}
             </Typography>
           </m.div>
-
-          {latest.subHead1 && (
-            <m.div variants={varFade().inUp}>
-              <Typography
-                sx={{
-                  fontFamily: "'Roboto Slab', serif",
-                  fontSize: { xs: '1.25rem', md: '1.75rem' },
-                  fontWeight: 500,
-                  textAlign: 'center',
-                  mb: 1,
-                  color: '#ccc',
-                }}
-              >
-                {latest.subHead1}
-              </Typography>
-            </m.div>
-          )}
-
-          {latest.subHead2 && (
-            <Typography
-              sx={{
-                fontFamily: "'Roboto Slab', serif",
-                fontSize: '1.25rem',
-                color: '#aaa',
-                mb: 1,
-              }}
-            >
-              {latest.subHead2}
-            </Typography>
-          )}
         </MotionContainer>
 
         {/* Content */}
@@ -79,39 +49,44 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
             lineHeight: 1.9,
             '& p': { marginBottom: '1.5rem' },
             mb: 6,
+            textAlign: 'center',
           }}
         >
           <div dangerouslySetInnerHTML={{ __html: latest.containt }} />
         </Box>
 
-        {/* Audio Player */}
-        {latest.audio && (
-          <div className="mt-4">
-            {latest?.audio && (
-              <audio controls className="w-full pointer-events-auto">
-                <source
-                  src={`/${latest.audio}`}
-                  type={
-                    latest.audio.endsWith('.wav')
-                      ? 'audio/wav'
-                      : latest.audio.endsWith('.ogg')
-                        ? 'audio/ogg'
-                        : 'audio/mpeg'
-                  }
-                />
-                <track
-                  kind="captions"
-                  src="/audio/captions.vtt"
-                  srcLang="en"
-                  label="English captions"
-                />
-                Your browser does not support the audio element.
-              </audio>
-            )}
-          </div>
-        )}
+        {/* Images with captions */}
+        <Grid container spacing={4} justifyContent="center" sx={{ mb: 8 }}>
+          {latest.images?.map((img: any, index: any) => (
+            <Grid item xs={12} md={6} key={index} textAlign="center">
+              <Box
+                component="img"
+                src={`/${img}`}
+                alt={`Design ${index + 1}`}
+                sx={{
+                  width: '100%',
+                  height: 400, // ✅ Fixed height for uniform size
+                  objectFit: 'cover', // ✅ crops the image without distortion
+                  borderRadius: 2,
+                  boxShadow: 3,
+                  mb: 2,
+                }}
+              />
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  fontFamily: "'Roboto Slab', serif",
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                }}
+              >
+                {index === 0 ? latest.subHead1 : latest.subHead2}
+              </Typography>
+            </Grid>
+          ))}
+        </Grid>
 
-        {/* Contact Form (same style as article) */}
+        {/* Contact Form */}
         <Box sx={{ mt: 8 }}>
           <Typography
             variant="h5"

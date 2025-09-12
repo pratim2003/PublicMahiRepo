@@ -28,6 +28,7 @@ export const paths = {
   page404: '/error/404',
   page500: '/error/500',
   components: '/components',
+  broadcast: '/broadcast',
   docs: 'https://docs.minimals.cc',
   changelog: 'https://docs.minimals.cc/changelog',
   zoneStore: 'https://mui.com/store/items/zone-landing-page/',

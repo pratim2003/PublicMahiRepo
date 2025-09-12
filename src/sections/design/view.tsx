@@ -87,7 +87,7 @@ export function DesignView({ broadcastData }: { broadcastData: any[] }) {
         </Grid>
 
         {/* Contact Form */}
-        <Box sx={{ mt: 8 }}>
+        {/* <Box sx={{ mt: 8 }}>
           <Typography
             variant="h5"
             gutterBottom
@@ -142,7 +142,7 @@ export function DesignView({ broadcastData }: { broadcastData: any[] }) {
               </Button>
             </Grid>
           </Grid>
-        </Box>
+        </Box> */}
       </Container>
     </Box>
   );

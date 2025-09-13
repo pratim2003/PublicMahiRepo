@@ -58,13 +58,12 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
         <HeaderSection
           layoutQuery={layoutQuery}
           sx={{
-       ...header?.sx,
-    color: "white",
-   
-    top: 0,
-    left: 0,
-    width: "100%",
-  
+            ...header?.sx,
+            color: 'white',
+
+            top: 0,
+            left: 0,
+            width: '100%',
           }}
           slots={{
             topArea: (
@@ -103,10 +102,10 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
                   data={navData}
                   sx={{
                     display: 'none',
-                  
+
                     [theme.breakpoints.up(layoutQuery)]: { mr: 2.5, display: 'flex' },
                   }}
-                /> 
+                />
 
                 {/* <Box display="flex" alignItems="center" gap={{ xs: 1, sm: 1.5 }}>
                  

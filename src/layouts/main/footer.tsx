@@ -351,7 +351,6 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
   );
 }
 
-
 // ----------------------------------------------------------------------
 
 // The HomeFooter and HomeFooterProps have been removed as per your request

@@ -62,7 +62,15 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
       headerSection={
         <HeaderSection
           layoutQuery={layoutQuery}
-          sx={{backgroundColor:'black',color:'white',...header?.sx}}
+          sx={{
+       ...header?.sx,
+    color: "white",
+   
+    top: 0,
+    left: 0,
+    width: "100%",
+  
+          }}
           slots={{
             topArea: (
               <Alert severity="info" sx={{ display: 'none', borderRadius: 0 }}>
@@ -86,6 +94,7 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
                   onClose={mobileNavOpen.onFalse}
                 />
                 {/* -- Logo -- */}
+
                 <Logo />
                 <Typography sx={{ pl: '10px', fontSize: '13px' }}>
                   Maahi Dev&apos;s Portfolio
@@ -99,9 +108,11 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
                   data={navData}
                   sx={{
                     display: 'none',
+                  
                     [theme.breakpoints.up(layoutQuery)]: { mr: 2.5, display: 'flex' },
                   }}
-                />
+                /> 
+
                 {/* <Box display="flex" alignItems="center" gap={{ xs: 1, sm: 1.5 }}>
                  
                   <SettingsButton />
@@ -133,7 +144,7 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
       /** **************************************
        * Style
        *************************************** */
-      sx={sx}
+      sx={{ backgroundColor: 'black' }}
     >
       <Main>{children}</Main>
     </LayoutSection>

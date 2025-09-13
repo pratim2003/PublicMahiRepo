@@ -45,15 +45,15 @@ export function CustomTabs({ children, slotProps, sx, ...other }: CustomTabsProp
         [`& .${tabsClasses.indicator}`]: {
           py: 1,
           height: 1,
-          bgcolor: 'transparent',
+          bgcolor: 'black',
           '& > span': {
             width: 1,
             height: 1,
             borderRadius: 1,
             display: 'block',
-            bgcolor: 'common.white',
+            // bgcolor: 'common.white',
             boxShadow: (theme) => theme.customShadows.z1,
-            [stylesMode.dark]: { bgcolor: 'grey.900' },
+         
             ...slotProps?.indicator,
           },
         },
@@ -61,6 +61,7 @@ export function CustomTabs({ children, slotProps, sx, ...other }: CustomTabsProp
           py: 1,
           px: 2,
           zIndex: 1,
+          background:"black",
           minHeight: 'auto',
           ...slotProps?.tab,
           [`&.${tabClasses.selected}`]: {

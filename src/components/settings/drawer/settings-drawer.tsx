@@ -80,8 +80,8 @@ export function SettingsDrawer({
       icon="moon"
       selected={settings.colorScheme === 'dark'}
       onClick={() => {
-        settings.onUpdateField('colorScheme', mode === 'light' ? 'dark' : 'light');
-        setMode(mode === 'light' ? 'dark' : 'light');
+        settings.onUpdateField('colorScheme', mode === 'dark' ? 'light' : 'dark');
+        setMode(mode === 'dark' ? 'light' : 'dark');
       }}
     />
   );

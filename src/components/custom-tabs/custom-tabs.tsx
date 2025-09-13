@@ -5,7 +5,6 @@ import NoSsr from '@mui/material/NoSsr';
 import { tabClasses } from '@mui/material/Tab';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
 
-import { stylesMode } from 'src/theme/styles';
 
 // ----------------------------------------------------------------------
 

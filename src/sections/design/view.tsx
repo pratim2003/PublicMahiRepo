@@ -22,15 +22,16 @@ export function DesignView({ broadcastData }: { broadcastData: any[] }) {
 
   return (
     <Box sx={{ bgcolor: 'black', color: 'white', py: 6 }}>
-      <Container maxWidth="md">
+      <Container sx={{ maxWidth: '1000px !important' }}>
+        {' '}
         {/* Header */}
         <MotionContainer sx={{ textAlign: 'center', mb: 6 }}>
           <m.div variants={varFade().inUp}>
             <Typography
               sx={{
                 fontFamily: "'Merriweather', serif",
-                fontSize: { xs: '2rem', md: '4rem' },
-                fontWeight: 600,
+                fontSize: { xs: '2rem', md: '5.2rem' },
+                fontWeight: 400,
                 mb: 2,
                 textTransform: 'uppercase',
                 letterSpacing: 1,
@@ -40,7 +41,6 @@ export function DesignView({ broadcastData }: { broadcastData: any[] }) {
             </Typography>
           </m.div>
         </MotionContainer>
-
         {/* Content */}
         <Box
           sx={{
@@ -49,12 +49,11 @@ export function DesignView({ broadcastData }: { broadcastData: any[] }) {
             lineHeight: 1.9,
             '& p': { marginBottom: '1.5rem' },
             mb: 6,
-            textAlign: 'center',
+            color: '#ccc',
           }}
         >
           <div dangerouslySetInnerHTML={{ __html: latest.containt }} />
         </Box>
-
         {/* Images with captions */}
         <Grid container spacing={4} justifyContent="center" sx={{ mb: 8 }}>
           {latest.images?.map((img: any, index: any) => (
@@ -85,64 +84,7 @@ export function DesignView({ broadcastData }: { broadcastData: any[] }) {
             </Grid>
           ))}
         </Grid>
-
-        {/* Contact Form */}
-        {/* <Box sx={{ mt: 8 }}>
-          <Typography
-            variant="h5"
-            gutterBottom
-            sx={{
-              fontFamily: "'Merriweather', serif",
-              fontWeight: 600,
-              mb: 3,
-            }}
-          >
-            Contact Maahi
-          </Typography>
-
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="First name"
-                variant="outlined"
-                InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Last name"
-                variant="outlined"
-                InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Email"
-                type="email"
-                variant="outlined"
-                InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Message"
-                multiline
-                rows={4}
-                variant="outlined"
-                InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Button variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
-        </Box> */}
+       
       </Container>
     </Box>
   );

@@ -207,8 +207,8 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
 
   // Contact form state and logic
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    firstname: '',
+    lastname: '',
     email: '',
     message: '',
   });
@@ -226,7 +226,7 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
     setStatus(null);
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('http://localhost:8082/api/fpii/contactus', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -235,7 +235,7 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
       if (!res.ok) throw new Error('Failed to send message');
 
       setStatus('Message sent successfully!');
-      setFormData({ firstName: '', lastName: '', email: '', message: '' });
+      setFormData({ firstname: '', lastname: '', email: '', message: '' });
     } catch (err) {
       setStatus('Something went wrong. Please try again.');
     } finally {
@@ -250,31 +250,30 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
         position: 'relative',
         bgcolor: '#000', // Set the background to black
         color: '#fff', // Set default text color to white
-        // py: { xs: 6, md: 10 },
-        px: { xs: 2, md: 10 },
         ...sx,
       }}
     >
       {/* <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.2)' }} /> */}
 
       <Container
+        maxWidth="md"
         sx={{
           pb: 5,
           // pt: 10,
-          px: { xs: 2, md: 10 },
+          px: { xs: 2, md: 15 },
           textAlign: 'center',
           [theme.breakpoints.up(layoutQuery)]: { textAlign: 'unset' },
         }}
       >
         <Grid container spacing={6} justifyContent="center" alignItems="flex-start">
           {/* Contact Form */}
-          <Box sx={{ mt: 8 }}>
+          <Box>
             <Typography
-              variant="h5"
+              variant="h3"
               gutterBottom
               sx={{
                 fontFamily: "'Merriweather', serif",
-                fontWeight: 600,
+                fontWeight: 500,
                 mb: 3,
               }}
             >
@@ -287,7 +286,7 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
                   fullWidth
                   label="First name"
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                  InputProps={{ sx: { bgcolor: 'white' } }}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -312,23 +311,29 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
                   fullWidth
                   label="Message"
                   multiline
-                  rows={4}
+                  // rows={4}
                   variant="outlined"
                   InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
                 />
               </Grid>
               <Grid item xs={12}>
-                <Button variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: 'white',
+                    borderColor: 'white',
+                    px: 10,
+                    py: 1,
+                    borderRadius: 3,
+                    ':hover': { backgroundColor: '#757c88' },
+                  }}
+                >
                   Submit
                 </Button>
               </Grid>
             </Grid>
           </Box>
         </Grid>
-
-        <Typography variant="body2" sx={{ mt: 10 }}>
-          © All rights reserved.
-        </Typography>
       </Container>
     </Box>
   );

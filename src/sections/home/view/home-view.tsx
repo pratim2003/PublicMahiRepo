@@ -133,132 +133,40 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
       sx={{
         backgroundColor: '#000',
         color: '#fff',
-        py: { xs: 6, md: 10 },
-        fontFamily: 'DM Sans, sans-serif',
+        py: { xs: 6, md: 5 },
+        // fontFamily: 'DM Sans, sans-serif',
       }}
     >
-      <Container maxWidth="lg">
+      <Container sx={{ maxWidth: '1000px !important' }}>
         <Grid container spacing={6} alignItems="center">
           {/* Left Content */}
           <Grid item xs={12} md={7}>
-            <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
+            <Typography
+              variant="h3"
+              sx={{ fontWeight: 600, fontFamily: "'Merriweather', serif", fontSize: '2rem', mb: 1 }}
+            >
               {homeData.heading.substring(0, 10)}
             </Typography>
 
-            <Typography variant="h5" sx={{ fontWeight: 500, mb: 3 }}>
+            <Typography
+              variant="h3"
+              sx={{ fontWeight: 600, fontFamily: "'Merriweather', serif", mb: 3 }}
+            >
               {homeData.heading.substring(10)}
             </Typography>
 
             <Typography
               variant="body1"
               sx={{
+                fontFamily: "'Merriweather', serif",
                 mb: 4,
                 lineHeight: 1.8,
-                fontSize: '1.05rem',
-                maxWidth: '600px',
+                fontSize: '1.2rem',
+                // maxWidth: '600px',
               }}
             >
               {homeData.body}
             </Typography>
-
-            {/* Contact Form */}
-            {/* <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-              Contact Maahi
-            </Typography>
-
-            <form onSubmit={handleSubmit}>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    name="firstName"
-                    label="First name"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    fullWidth
-                    required
-                    variant="outlined"
-                    sx={{
-                      input: { color: '#fff' },
-                      label: { color: '#fff' },
-                      '& .MuiOutlinedInput-root fieldset': { borderColor: '#fff' },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    name="lastName"
-                    label="Last name"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    fullWidth
-                    required
-                    variant="outlined"
-                    sx={{
-                      input: { color: '#fff' },
-                      label: { color: '#fff' },
-                      '& .MuiOutlinedInput-root fieldset': { borderColor: '#fff' },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    name="email"
-                    label="Email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    fullWidth
-                    required
-                    variant="outlined"
-                    sx={{
-                      input: { color: '#fff' },
-                      label: { color: '#fff' },
-                      '& .MuiOutlinedInput-root fieldset': { borderColor: '#fff' },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    name="message"
-                    label="Message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    fullWidth
-                    multiline
-                    rows={3}
-                    required
-                    variant="outlined"
-                    sx={{
-                      textarea: { color: '#fff' },
-                      label: { color: '#fff' },
-                      '& .MuiOutlinedInput-root fieldset': { borderColor: '#fff' },
-                    }}
-                  />
-                </Grid>
-              </Grid>
-
-              <Button
-                type="submit"
-                variant="outlined"
-                disabled={loading}
-                sx={{
-                  mt: 3,
-                  px: 4,
-                  py: 1,
-                  borderRadius: '30px',
-                  borderColor: '#fff',
-                  color: '#fff',
-                  textTransform: 'none',
-                  fontWeight: 500,
-                  '&:hover': {
-                    backgroundColor: '#fff',
-                    color: '#000',
-                  },
-                }}
-              >
-                {loading ? 'Sending...' : 'Submit'}
-              </Button>
-            </form> */}
 
             {status && (
               <Typography
@@ -278,8 +186,8 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
               <Image
                 src={`/${homeData.image}`}
                 alt="Home"
-                width={300}
-                height={400}
+                width={250}
+                height={300}
                 style={{ borderRadius: '6px', objectFit: 'cover' }}
               />
             )}

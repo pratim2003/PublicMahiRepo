@@ -62,7 +62,7 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
       headerSection={
         <HeaderSection
           layoutQuery={layoutQuery}
-          sx={header?.sx}
+          sx={{backgroundColor:'black',color:'white',...header?.sx}}
           slots={{
             topArea: (
               <Alert severity="info" sx={{ display: 'none', borderRadius: 0 }}>
@@ -102,12 +102,12 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
                     [theme.breakpoints.up(layoutQuery)]: { mr: 2.5, display: 'flex' },
                   }}
                 />
-                <Box display="flex" alignItems="center" gap={{ xs: 1, sm: 1.5 }}>
-                  {/* -- Settings button -- */}
+                {/* <Box display="flex" alignItems="center" gap={{ xs: 1, sm: 1.5 }}>
+                 
                   <SettingsButton />
-                  {/* -- Sign in button -- */}
+                 
                   <SignInButton />
-                  {/* -- Purchase button -- */}
+                 
                   <Button
                     variant="contained"
                     rel="noopener"
@@ -120,7 +120,7 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
                   >
                     Purchase
                   </Button>
-                </Box>
+                </Box>   */}
               </>
             ),
           }}

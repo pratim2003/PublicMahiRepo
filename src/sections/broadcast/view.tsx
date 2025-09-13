@@ -22,18 +22,19 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
 
   return (
     <Box sx={{ bgcolor: 'black', color: 'white', py: 6 }}>
-      <Container maxWidth="md">
+      <Container sx={{ maxWidth: '1000px !important' }}>
         {/* Header */}
-        <MotionContainer sx={{ textAlign: 'center', mb: 6 }}>
+        <MotionContainer>
           <m.div variants={varFade().inUp}>
             <Typography
               sx={{
                 fontFamily: "'Merriweather', serif",
-                fontSize: { xs: '2rem', md: '4rem' },
-                fontWeight: 600,
+                fontSize: { xs: '2rem', md: '5.2rem' },
+                fontWeight: 400,
                 mb: 2,
                 textTransform: 'uppercase',
                 letterSpacing: 1,
+                textAlign: 'center',
               }}
             >
               {latest.heading}
@@ -45,11 +46,11 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
               <Typography
                 sx={{
                   fontFamily: "'Roboto Slab', serif",
-                  fontSize: { xs: '1.25rem', md: '1.75rem' },
+                  fontSize: { xs: '1.25rem', md: '1.2rem' },
                   fontWeight: 500,
-                  textAlign: 'center',
                   mb: 1,
                   color: '#ccc',
+                  fontStyle: 'italic',
                 }}
               >
                 {latest.subHead1}
@@ -57,13 +58,40 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
             </m.div>
           )}
 
+          {/* Audio Player */}
+          {latest.audio && (
+            <div style={{ marginTop: 10, marginBottom: 20 }}>
+              {latest?.audio && (
+                <audio controls className="w-full pointer-events-auto">
+                  <source
+                    src={`/${latest.audio}`}
+                    type={
+                      latest.audio.endsWith('.wav')
+                        ? 'audio/wav'
+                        : latest.audio.endsWith('.ogg')
+                          ? 'audio/ogg'
+                          : 'audio/mpeg'
+                    }
+                  />
+                  <track
+                    kind="captions"
+                    src="/audio/captions.vtt"
+                    srcLang="en"
+                    label="English captions"
+                  />
+                  Your browser does not support the audio element.
+                </audio>
+              )}
+            </div>
+          )}
+
           {latest.subHead2 && (
             <Typography
               sx={{
                 fontFamily: "'Roboto Slab', serif",
-                fontSize: '1.25rem',
+                fontSize: '1.5rem',
                 color: '#aaa',
-                mb: 1,
+                py: 3,
               }}
             >
               {latest.subHead2}
@@ -75,98 +103,15 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
         <Box
           sx={{
             fontFamily: "'Roboto Slab', serif",
-            fontSize: '1.05rem',
+            fontSize: '1rem',
             lineHeight: 1.9,
             '& p': { marginBottom: '1.5rem' },
-            mb: 6,
+            mb: 3,
+            color: '#ccc',
+            textAlign: 'justify',
           }}
         >
           <div dangerouslySetInnerHTML={{ __html: latest.containt }} />
-        </Box>
-
-        {/* Audio Player */}
-        {latest.audio && (
-          <div className="mt-4">
-            {latest?.audio && (
-              <audio controls className="w-full pointer-events-auto">
-                <source
-                  src={`/${latest.audio}`}
-                  type={
-                    latest.audio.endsWith('.wav')
-                      ? 'audio/wav'
-                      : latest.audio.endsWith('.ogg')
-                        ? 'audio/ogg'
-                        : 'audio/mpeg'
-                  }
-                />
-                <track
-                  kind="captions"
-                  src="/audio/captions.vtt"
-                  srcLang="en"
-                  label="English captions"
-                />
-                Your browser does not support the audio element.
-              </audio>
-            )}
-          </div>
-        )}
-
-        {/* Contact Form (same style as article) */}
-        <Box sx={{ mt: 8 }}>
-          <Typography
-            variant="h5"
-            gutterBottom
-            sx={{
-              fontFamily: "'Merriweather', serif",
-              fontWeight: 600,
-              mb: 3,
-            }}
-          >
-            Contact Maahi
-          </Typography>
-
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="First name"
-                variant="outlined"
-                InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Last name"
-                variant="outlined"
-                InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Email"
-                type="email"
-                variant="outlined"
-                InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Message"
-                multiline
-                rows={4}
-                variant="outlined"
-                InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Button variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
         </Box>
       </Container>
     </Box>

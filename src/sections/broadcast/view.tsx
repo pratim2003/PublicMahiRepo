@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
 import { m } from 'framer-motion';
-import { Box, Container, Typography, Slider, IconButton } from '@mui/material';
-import { PlayArrow, Pause } from '@mui/icons-material';
+import React, { useRef, useState, useEffect } from 'react';
+
+import { Pause, PlayArrow } from '@mui/icons-material';
+import { Box, Slider, Container, Typography, IconButton } from '@mui/material';
+
 import { varFade, MotionContainer } from 'src/components/animate';
 
 export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
@@ -11,43 +13,33 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
   const [progress, setProgress] = useState(0); // current time
   const [duration, setDuration] = useState(0); // total duration
 
-  // while user is dragging the slider we store a temporary value here
-  const [isSeeking, setIsSeeking] = useState(false);
-  const [seekValue, setSeekValue] = useState<number | null>(null);
-
-  // Attach reliable listeners and force metadata load when audio src changes
+  // Attach listeners when audio changes
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio) return undefined; // explicitly return undefined
 
     const onLoadedMetadata = () => {
       const d = audio.duration;
       setDuration(Number.isFinite(d) ? d : 0);
-      // ensure currentTime is within bounds
       if (audio.currentTime > (Number.isFinite(d) ? d : 0)) {
         audio.currentTime = 0;
       }
     };
 
     const onTimeUpdate = () => {
-      // don't overwrite while user is dragging
-      if (!isSeeking) {
-        setCurrentTime(audio.currentTime);
-      }
+      setProgress(audio.currentTime);
     };
 
     const onCanPlay = () => {
-      // sometimes duration is only available at canplay
       onLoadedMetadata();
     };
 
     const onEnded = () => {
       setIsPlaying(false);
-      setCurrentTime(audio.duration || 0);
+      setProgress(audio.duration || 0);
     };
 
     audio.addEventListener('loadedmetadata', onLoadedMetadata);
@@ -55,12 +47,11 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
     audio.addEventListener('canplay', onCanPlay);
     audio.addEventListener('ended', onEnded);
 
-    // Ask browser to fetch metadata immediately
     audio.preload = 'metadata';
     try {
       audio.load();
-    } catch (err) {
-      // ignore; some browsers may throw if already loading
+    } catch {
+      // ignore load() errors
     }
 
     return () => {
@@ -69,10 +60,9 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
       audio.removeEventListener('canplay', onCanPlay);
       audio.removeEventListener('ended', onEnded);
     };
-    // only re-run when the audio source changes
-  }, [latest?.audio, isSeeking === false]); // keep dependency on audio; including isSeeking=false avoids stale listener issue
+  }, [latest?.audio]);
 
-  // Play/pause toggle using async play() to catch autoplay restrictions
+  // Play/pause toggle
   const togglePlay = async () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -85,37 +75,13 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
         await audio.play();
         setIsPlaying(true);
       } catch (err) {
-        // play() might be blocked by browser autoplay policy; log for debug
         console.error('Audio play prevented:', err);
       }
     }
   };
 
-  // Called continuously while dragging the slider
-  const handleSliderChange = (_event: Event, value: number | number[]) => {
-    const v = Array.isArray(value) ? value[0] : value;
-    setSeekValue(v);
-    setIsSeeking(true);
-    // update the visible time as user drags
-    setCurrentTime(v);
-  };
-
-  // Called when user releases the slider (commit)
-  const handleSliderCommit = (_event: React.SyntheticEvent | Event, value: number | number[]) => {
-    const v = Array.isArray(value) ? value[0] : value;
-    const audio = audioRef.current;
-    if (audio) {
-      // jump audio to the chosen position
-      audio.currentTime = v;
-    }
-    setCurrentTime(v);
-    setSeekValue(null);
-    // small delay to avoid immediate override from timeupdate while the element seeks
-    setTimeout(() => setIsSeeking(false), 50);
-  };
-
   const formatTime = (time: number) => {
-    if (!Number.isFinite(time) || isNaN(time)) return '0:00';
+    if (!Number.isFinite(time) || Number.isNaN(time)) return '0:00';
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
@@ -128,10 +94,6 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
       </Box>
     );
   }
-
-  // derive slider show value (use seekValue while dragging)
-  const sliderValue = typeof seekValue === 'number' ? seekValue : currentTime;
-  const sliderMax = Number.isFinite(duration) && duration > 0 ? duration : 0;
 
   return (
     <Box sx={{ bgcolor: 'black', color: 'white', py: 6 }}>
@@ -171,7 +133,7 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
             </m.div>
           )}
 
-          {/* --- Robust Custom Audio Player --- */}
+          {/* --- Custom Audio Player --- */}
           {latest.audio && (
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               {/* Play/Pause button */}
@@ -185,10 +147,10 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
                 min={0}
                 max={duration}
                 step={0.1}
-                onChange={(_, value) => setProgress(value as number)} // updates UI while sliding
+                onChange={(_, value) => setProgress(value as number)}
                 onChangeCommitted={(_, value) => {
                   if (audioRef.current) {
-                    audioRef.current.currentTime = value as number; // set audio position on release
+                    audioRef.current.currentTime = value as number;
                   }
                 }}
                 sx={{ flexGrow: 1, color: 'white' }}
@@ -199,10 +161,11 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
               </Typography>
 
               {/* Hidden audio tag */}
-              <audio ref={audioRef} src={`/${latest.audio}`} hidden />
+              <audio ref={audioRef} src={`/${latest.audio}`} hidden>
+                <track kind="captions" src="" label="captions" />
+              </audio>
             </Box>
           )}
-
           {/* --- end audio player --- */}
 
           {latest.subHead2 && (
@@ -231,6 +194,7 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
             textAlign: 'justify',
           }}
         >
+          {/* ⚠️ Ensure latest.containt is sanitized before using dangerouslySetInnerHTML */}
           <div dangerouslySetInnerHTML={{ __html: latest.containt }} />
         </Box>
       </Container>

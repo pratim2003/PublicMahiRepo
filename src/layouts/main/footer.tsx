@@ -184,9 +184,11 @@
 'use client';
 
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
+
 import { useState } from 'react';
-import { Box, Grid, Button, Container, TextField, Typography } from '@mui/material';
+
 import { useTheme } from '@mui/material/styles';
+import { Box, Grid, Button, Container, TextField, Typography } from '@mui/material';
 
 export type FooterProps = {
   layoutQuery: Breakpoint;
@@ -348,7 +350,6 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
     </Box>
   );
 }
-
 
 // ----------------------------------------------------------------------
 

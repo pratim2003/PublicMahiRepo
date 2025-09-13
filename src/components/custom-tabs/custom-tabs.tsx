@@ -5,8 +5,6 @@ import NoSsr from '@mui/material/NoSsr';
 import { tabClasses } from '@mui/material/Tab';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
 
-import { stylesMode } from 'src/theme/styles';
-
 // ----------------------------------------------------------------------
 
 export type CustomTabsProps = TabsProps & {
@@ -53,7 +51,7 @@ export function CustomTabs({ children, slotProps, sx, ...other }: CustomTabsProp
             display: 'block',
             // bgcolor: 'common.white',
             boxShadow: (theme) => theme.customShadows.z1,
-         
+
             ...slotProps?.indicator,
           },
         },
@@ -61,7 +59,7 @@ export function CustomTabs({ children, slotProps, sx, ...other }: CustomTabsProp
           py: 1,
           px: 2,
           zIndex: 1,
-          background:"black",
+          background: 'black',
           minHeight: 'auto',
           ...slotProps?.tab,
           [`&.${tabClasses.selected}`]: {

@@ -2,13 +2,10 @@
 
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
 
-import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
-import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-import { paths } from 'src/routes/paths';
 import { usePathname } from 'src/routes/hooks';
 
 import { useBoolean } from 'src/hooks/use-boolean';
@@ -23,8 +20,6 @@ import { MenuButton } from '../components/menu-button';
 import { LayoutSection } from '../core/layout-section';
 import { HeaderSection } from '../core/header-section';
 import { navData as mainNavData } from '../config-nav-main';
-import { SignInButton } from '../components/sign-in-button';
-import { SettingsButton } from '../components/settings-button';
 
 import type { NavMainProps } from './nav/types';
 
@@ -62,7 +57,7 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
       headerSection={
         <HeaderSection
           layoutQuery={layoutQuery}
-          sx={{backgroundColor:'black',color:'white',...header?.sx}}
+          sx={{ backgroundColor: 'black', color: 'white', ...header?.sx }}
           slots={{
             topArea: (
               <Alert severity="info" sx={{ display: 'none', borderRadius: 0 }}>

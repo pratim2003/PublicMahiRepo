@@ -3,7 +3,7 @@
 import React from 'react';
 import { m } from 'framer-motion';
 
-import { Box, Grid, Button, Container, TextField, Typography } from '@mui/material';
+import { Box, Grid, Container, Typography } from '@mui/material';
 
 import { varFade, MotionContainer } from 'src/components/animate';
 
@@ -84,7 +84,6 @@ export function DesignView({ broadcastData }: { broadcastData: any[] }) {
             </Grid>
           ))}
         </Grid>
-       
       </Container>
     </Box>
   );

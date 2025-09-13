@@ -6,8 +6,9 @@ export async function broadcastController(req: Request): Promise<any> {
   const formData = await req.formData();
   const containt = formData.get('containt') as string;
   const heading = formData.get('heading') as string;
-  const subHead1 = (formData.get('subHead1') as string) || '';
-  const subHead2 = (formData.get('subHead2') as string) || '';
+  const subHead1 = formData.get('subHead1') as string;
+  const subHead2 = formData.get('subHead2') as string;
+  const id = formData.get('id') as string;
 
   const file = formData.get('file') as File | null;
   let savedImage = '';
@@ -16,6 +17,17 @@ export async function broadcastController(req: Request): Promise<any> {
     if (uploadResult.success && uploadResult.path) {
       savedImage = uploadResult.path;
     }
+  }
+  if (id) {
+    const data = await broadcatModel.findById(id);
+    const newDesign = await broadcatModel.findByIdAndUpdate(id, {
+      containt: containt || data?.containt,
+      heading: heading || data?.heading,
+      subHead1: subHead1 || data?.subHead1,
+      subHead2: subHead2 || data?.subHead2,
+      audio: savedImage || data?.audio,
+    });
+    return newDesign;
   }
 
   const newDesign = await broadcatModel.create({

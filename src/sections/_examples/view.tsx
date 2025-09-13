@@ -122,7 +122,7 @@ export function ComponentsView({ homeData }: { homeData: any }) {
                 >
                   <Box
                     sx={{
-                      height: '670px', 
+                      height: '670px',
                       minWidth: '800px', // keeps it big but not too wide
                       backgroundColor: '#f9f9f9',
                       // borderRadius: '10px',
@@ -134,7 +134,6 @@ export function ComponentsView({ homeData }: { homeData: any }) {
                       src={`/${homeData[0]?.images[1]}`}
                       alt="School Safety Statistics"
                       style={{
-                       
                         borderRadius: '12px',
                       }}
                     />

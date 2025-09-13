@@ -184,18 +184,9 @@
 'use client';
 
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
-
 import { useState } from 'react';
-
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Button from '@mui/material/Button';
+import { Box, Grid, Button, Container, TextField, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import Container from '@mui/material/Container';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-
-// ----------------------------------------------------------------------
 
 export type FooterProps = {
   layoutQuery: Breakpoint;
@@ -205,7 +196,7 @@ export type FooterProps = {
 export function Footer({ layoutQuery, sx }: FooterProps) {
   const theme = useTheme();
 
-  // Contact form state and logic
+  // Contact form state
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -216,10 +207,12 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
 
+  // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -234,10 +227,10 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
 
       if (!res.ok) throw new Error('Failed to send message');
 
-      setStatus('Message sent successfully!');
+      setStatus('✅ Message sent successfully!');
       setFormData({ firstname: '', lastname: '', email: '', message: '' });
     } catch (err) {
-      setStatus('Something went wrong. Please try again.');
+      setStatus('❌ Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -248,26 +241,22 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
       component="footer"
       sx={{
         position: 'relative',
-        bgcolor: '#000', // Set the background to black
-        color: '#fff', // Set default text color to white
+        bgcolor: '#000',
+        color: '#fff',
         ...sx,
       }}
     >
-      {/* <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.2)' }} /> */}
-
       <Container
         maxWidth="md"
         sx={{
           pb: 5,
-          // pt: 10,
           px: { xs: 2, md: 15 },
           textAlign: 'center',
           [theme.breakpoints.up(layoutQuery)]: { textAlign: 'unset' },
         }}
       >
         <Grid container spacing={6} justifyContent="center" alignItems="flex-start">
-          {/* Contact Form */}
-          <Box>
+          <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
             <Typography
               variant="h3"
               gutterBottom
@@ -284,15 +273,21 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
+                  name="firstname"
                   label="First name"
+                  value={formData.firstname}
+                  onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white' } }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
+                  name="lastname"
                   label="Last name"
+                  value={formData.lastname}
+                  onChange={handleChange}
                   variant="outlined"
                   InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
                 />
@@ -300,8 +295,11 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
               <Grid item xs={12}>
                 <TextField
                   fullWidth
+                  name="email"
                   label="Email"
                   type="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   variant="outlined"
                   InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
                 />
@@ -309,16 +307,21 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
               <Grid item xs={12}>
                 <TextField
                   fullWidth
+                  name="message"
                   label="Message"
                   multiline
-                  // rows={4}
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
                   variant="outlined"
                   InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
                 />
               </Grid>
               <Grid item xs={12}>
                 <Button
+                  type="submit"
                   variant="outlined"
+                  disabled={loading}
                   sx={{
                     color: 'white',
                     borderColor: 'white',
@@ -328,16 +331,24 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
                     ':hover': { backgroundColor: '#757c88' },
                   }}
                 >
-                  Submit
+                  {loading ? 'Sending...' : 'Submit'}
                 </Button>
               </Grid>
             </Grid>
+
+            {/* Status message */}
+            {status && (
+              <Typography sx={{ mt: 2, color: status.startsWith('✅') ? 'lightgreen' : 'red' }}>
+                {status}
+              </Typography>
+            )}
           </Box>
         </Grid>
       </Container>
     </Box>
   );
 }
+
 
 // ----------------------------------------------------------------------
 

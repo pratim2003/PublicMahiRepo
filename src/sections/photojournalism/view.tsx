@@ -1,11 +1,8 @@
 'use client';
 
 import React from 'react';
-import { m } from 'framer-motion';
 
-import { Box, Container, Typography, Grid } from '@mui/material';
-
-import { varFade, MotionContainer } from 'src/components/animate';
+import { Box, Grid, Container, Typography } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +21,7 @@ export function ComponentsView({ homeData }: { homeData: any }) {
             textTransform: 'uppercase',
           }}
         >
-         {homeData[0]?.heading}
+          {homeData[0]?.heading}
         </Typography>
 
         {/* Image + Content */}

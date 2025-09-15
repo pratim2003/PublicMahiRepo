@@ -90,50 +90,63 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
 
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
+                <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
+                  First name
+                </Typography>
                 <TextField
                   fullWidth
                   name="firstname"
-                  label="First name"
+                           placeholder='FirstName'
                   value={formData.firstname}
                   onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1,color:"black" } }}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
+                <Typography variant="body2" sx={{ color: 'white', mb: 1, }}>
+                  Last name
+                </Typography>
                 <TextField
                   fullWidth
                   name="lastname"
-                  label="Last name"
+                           placeholder='Last Name'
                   value={formData.lastname}
                   onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1,color:"black" } }}
                 />
               </Grid>
               <Grid item xs={12}>
+                <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
+                  Email
+                </Typography>
                 <TextField
                   fullWidth
                   name="email"
-                  label="Email"
                   type="email"
+            
+                           placeholder='Email'
                   value={formData.email}
                   onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 ,color:"black"} }}
                 />
               </Grid>
               <Grid item xs={12}>
+                <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
+                  Message
+                </Typography>
                 <TextField
                   fullWidth
                   name="message"
-                  label="Message"
+              placeholder='Message'
                   multiline
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1,color:"black" } }}
                 />
               </Grid>
               <Grid item xs={12}>

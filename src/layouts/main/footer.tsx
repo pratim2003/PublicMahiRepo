@@ -38,7 +38,7 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
     setStatus(null);
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/fpii/contactus`, {
+      const res = await fetch('http://localhost:8082/api/fpii/contactus', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -77,11 +77,11 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
         <Grid container spacing={6} justifyContent="center" alignItems="flex-start">
           <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
             <Typography
-              variant="h3"
-              gutterBottom
               sx={{
-                fontFamily: "'Merriweather', serif",
-                fontWeight: 500,
+                fontFamily: "'Century Gothic', 'Futura', 'Poppins', 'Montserrat', sans-serif",
+                fontSize: '1.8rem',
+                fontWeight: 400,
+                letterSpacing: '0.5px',
                 mb: 3,
               }}
             >
@@ -90,50 +90,59 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
 
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
+                <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
+                  First name
+                </Typography>
                 <TextField
                   fullWidth
                   name="firstname"
-                  label="First name"
+                  required
                   value={formData.firstname}
                   onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 0, color: 'black' } }}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
+                <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
+                  Last name
+                </Typography>
                 <TextField
                   fullWidth
                   name="lastname"
-                  label="Last name"
                   value={formData.lastname}
                   onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 0, color: 'black' } }}
                 />
               </Grid>
               <Grid item xs={12}>
+                <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
+                  Email
+                </Typography>
                 <TextField
                   fullWidth
                   name="email"
-                  label="Email"
                   type="email"
+                  required
                   value={formData.email}
                   onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 0, color: 'black' } }}
                 />
               </Grid>
               <Grid item xs={12}>
+                <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
+                  Message
+                </Typography>
                 <TextField
                   fullWidth
                   name="message"
-                  label="Message"
                   multiline
-                  rows={4}
                   value={formData.message}
                   onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 } }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 0, color: 'black' } }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -167,7 +176,3 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
     </Box>
   );
 }
-
-// ----------------------------------------------------------------------
-
-// The HomeFooter and HomeFooterProps have been removed as per your request

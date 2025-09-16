@@ -33,7 +33,7 @@ export function ComponentsView({ homeData }: { homeData: any }) {
             </Typography>
           </m.div>
 
-          <m.div variants={varFade().inUp}>
+          <m.div variants={varFade().inLeft}>
             <Typography
               sx={{
                 fontFamily: "'Roboto Slab', serif",

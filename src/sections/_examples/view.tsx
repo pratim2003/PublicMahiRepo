@@ -25,20 +25,24 @@ export function ComponentsView({ homeData }: { homeData: any }) {
                 mb: 5,
                 textTransform: 'uppercase',
                 letterSpacing: 1,
+                color: '#fff',
+                WebkitTextStroke: '0.1px #000',
               }}
             >
               WRITING & REPORTING
             </Typography>
           </m.div>
 
-          <m.div variants={varFade().inUp}>
+          <m.div variants={varFade().inLeft}>
             <Typography
               sx={{
                 fontFamily: "'Roboto Slab', serif",
-                fontSize: { xs: '1.25rem', md: '1.75rem' },
-                fontWeight: 500,
+                fontSize: { xs: '1.25rem', md: '2rem' },
+                fontWeight: 400,
                 textAlign: 'left',
                 mb: 1,
+                color: '#fff',
+                WebkitTextStroke: '0.3px #000',
               }}
             >
               {homeData[0]?.title}
@@ -49,9 +53,10 @@ export function ComponentsView({ homeData }: { homeData: any }) {
             sx={{
               fontFamily: "'Roboto Slab', serif",
               fontSize: '1.75rem',
-              color: '#ccc',
+              color: '#fff',
               mb: 0.5,
               textAlign: 'left',
+              WebkitTextStroke: '0.3px #000',
             }}
           >
             {homeData[0]?.subtitle}
@@ -60,23 +65,25 @@ export function ComponentsView({ homeData }: { homeData: any }) {
           <Typography
             sx={{
               fontFamily: "'Roboto Slab', serif",
-              fontSize: '0.95rem',
-
-              color: '#bbb',
+              fontSize: '1.2rem',
+              color: '#fff',
               textAlign: 'left',
+              WebkitTextStroke: '0.3px #000',
             }}
           >
-            {homeData[0]?.authors?.join(' , ')}
+            By {homeData[0]?.authors?.join(' & ')}
           </Typography>
         </MotionContainer>
-        {}
+        
         {/* </Box> */}
         <Box
           sx={{
             fontFamily: "'Roboto Slab', serif",
-            fontSize: '1.05rem',
+            fontSize: '1.2rem',
             lineHeight: 1.9,
-            '& p': { marginBottom: '1.5rem' }, // style <p> like Typography paragraphs
+            '& p': { marginBottom: '1.5rem' },
+            color: '#fff',
+            WebkitTextStroke: '0.3px #000',
           }}
         >
           {homeData[0]?.body.split('</p>').map((chunk: any, index: number) => (
@@ -92,8 +99,6 @@ export function ComponentsView({ homeData }: { homeData: any }) {
                     style={{
                       height: '500px',
                       width: '100%',
-                      // maxWidth: '100%', // full-width for first image
-                      // borderRadius: '12px',
                       boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
                     }}
                   />
@@ -123,9 +128,8 @@ export function ComponentsView({ homeData }: { homeData: any }) {
                   <Box
                     sx={{
                       height: '670px',
-                      minWidth: '800px', // keeps it big but not too wide
+                      minWidth: '800px',
                       backgroundColor: '#f9f9f9',
-                      // borderRadius: '10px',
                       boxShadow: '0 6px 18px rgba(0,0,0,0.2)',
                       p: 2,
                     }}
@@ -166,6 +170,8 @@ const bodyStyle = {
   fontSize: '1.2rem',
   lineHeight: 1.9,
   mb: 3,
+  color: '#fff',
+  // WebkitTextStroke: '0.5px #000',
 };
 
 const italicStyle = {

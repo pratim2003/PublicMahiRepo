@@ -1,80 +1,3 @@
-// 'use client';
-
-// import { BackToTop } from 'src/components/animate/back-to-top';
-// import { ScrollProgress, useScrollProgress } from 'src/components/animate/scroll-progress';
-
-// import { HomeHero } from '../home-hero';
-
-// // ----------------------------------------------------------------------
-// interface FetchedHomeData {
-//   data: {
-//     _id: string;
-//     heading: string;
-//     body: string;
-//     image: string;
-//     __v: number;
-//   }[];
-// }
-
-// interface HomeViewProps {
-//   homeData: FetchedHomeData;
-// }
-
-// export function HomeView({ homeData }: HomeViewProps) {
-//   const pageProgress = useScrollProgress();
-
-//   return (
-//     <>
-//       <ScrollProgress
-//         variant="linear"
-//         progress={pageProgress.scrollYProgress}
-//         sx={{ position: 'fixed' }}
-//       />
-
-//       <BackToTop />
-
-//       <HomeHero data={homeData} />
-
-//       {/* <Stack sx={{ position: 'relative', bgcolor: 'background.default' }}>
-//         <HomeMinimal />
-
-//         <HomeHugePackElements />
-
-//         <HomeForDesigner />
-
-//         <HomeHighlightFeatures />
-
-//         <HomeIntegrations />
-
-//         <HomePricing />
-
-//         <HomeTestimonials />
-
-//         <HomeFAQs />
-
-//         <HomeZoneUI />
-
-//         <HomeAdvertisement />
-//       </Stack> */}
-//     </>
-//   );
-// }
-// export function HomeView({ homeData }: { homeData: any }) {
-//   return (
-//     <div style={{ padding: 20 }}>
-//       <h1>{homeData.heading}</h1>
-//       <p>{homeData.body}</p>
-//       {homeData.image && (
-//         <img
-//           src={`/${homeData.image}`} // image is served from /public/upload
-//           alt="Home"
-//           style={{ maxWidth: '300px', borderRadius: '8px' }}
-//         />
-//       )}
-//     </div>
-//   );
-// }
-
 'use client';
 
 import Image from 'next/image';
@@ -89,80 +12,58 @@ type HomeData = {
 };
 
 export function HomeView({ homeData }: { homeData: HomeData }) {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: '',
-  });
-  const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus('');
-
-    try {
-      // 👇 Replace with your real API endpoint
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        setStatus('Message sent successfully!');
-        setFormData({ firstName: '', lastName: '', email: '', message: '' });
-      } else {
-        setStatus('Failed to send message. Please try again.');
-      }
-    } catch (error) {
-      setStatus('Error occurred. Try again later.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <Box
       sx={{
         backgroundColor: '#000',
         color: '#fff',
         py: { xs: 6, md: 5 },
-        // fontFamily: 'DM Sans, sans-serif',
       }}
     >
       <Container sx={{ maxWidth: '1000px !important' }}>
         <Grid container spacing={6} alignItems="center">
           {/* Left Content */}
           <Grid item xs={12} md={7}>
+            {/* Heading - Sans Serif */}
             <Typography
-              variant="h3"
-              sx={{ fontWeight: 600, fontFamily: "'Merriweather', serif", fontSize: '2rem', mb: 1 }}
+              variant="body2"
+              sx={{
+                fontWeight: 600,
+                fontSize: '2rem',
+                letterSpacing: '3px',
+                mb: 1,
+                fontFamily: "'Helvetica Neue', Arial, sans-serif",
+              }}
             >
               {homeData.heading.substring(0, 10)}
             </Typography>
 
             <Typography
-              variant="h3"
-              sx={{ fontWeight: 600, fontFamily: "'Merriweather', serif", mb: 3 }}
+              variant="body2"
+              sx={{
+                fontWeight: 600,
+                fontSize: '2rem',
+                letterSpacing: '2px',
+                mb: 3,
+                fontFamily: "'Helvetica Neue', Arial, sans-serif",
+              }}
             >
               {homeData.heading.substring(10)}
             </Typography>
 
+            {/* Body - Sans Serif */}
             <Typography
               variant="body1"
               sx={{
-                fontFamily: "'Merriweather', serif",
+                fontFamily: "'Roboto Slab', serif",
                 mb: 4,
-                lineHeight: 1.8,
-                fontSize: '1.2rem',
-                // maxWidth: '600px',
+                lineHeight: 2,
+                fontSize: '1.4rem',
+                fontWeight: 'lighter',
+                letterSpacing: '0.2px',
+                color: '#fff',
+                WebkitTextStroke: '0.5px #000',
               }}
             >
               {homeData.body}
@@ -173,6 +74,7 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
                 sx={{
                   mt: 2,
                   color: status.includes('success') ? 'lightgreen' : 'red',
+                  fontFamily: "'Roboto Slab', serif",
                 }}
               >
                 {status}

@@ -1,8 +1,10 @@
+
 'use client';
 
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
-import toast from 'react-hot-toast';
+
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 import { useTheme } from '@mui/material/styles';
 import { Box, Grid, Button, Container, TextField, Typography } from '@mui/material';
@@ -38,11 +40,11 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
     setStatus(null);
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/fpii/contactus`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/fpii/contactus`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+  });
 
       if (!res.ok) throw new Error('Failed to send message');
 
@@ -77,11 +79,11 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
         <Grid container spacing={6} justifyContent="center" alignItems="flex-start">
           <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
             <Typography
-              variant="h3"
-              gutterBottom
               sx={{
-                fontFamily: "'Merriweather', serif",
-                fontWeight: 500,
+                fontFamily: "'Century Gothic', 'Futura', 'Poppins', 'Montserrat', sans-serif",
+                fontSize: '1.8rem',
+                fontWeight: 400,
+                letterSpacing: '0.5px',
                 mb: 3,
               }}
             >
@@ -96,25 +98,24 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
                 <TextField
                   fullWidth
                   name="firstname"
-                           placeholder='FirstName'
+                  required
                   value={formData.firstname}
                   onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1,color:"black" } }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 0, color: 'black' } }}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography variant="body2" sx={{ color: 'white', mb: 1, }}>
+                <Typography variant="body2" sx={{ color: 'white', mb: 1 }}>
                   Last name
                 </Typography>
                 <TextField
                   fullWidth
                   name="lastname"
-                           placeholder='Last Name'
                   value={formData.lastname}
                   onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1,color:"black" } }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 0, color: 'black' } }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -125,12 +126,11 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
                   fullWidth
                   name="email"
                   type="email"
-            
-                           placeholder='Email'
+                  required
                   value={formData.email}
                   onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1 ,color:"black"} }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 0, color: 'black' } }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -140,13 +140,11 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
                 <TextField
                   fullWidth
                   name="message"
-              placeholder='Message'
                   multiline
-                  rows={4}
                   value={formData.message}
                   onChange={handleChange}
                   variant="outlined"
-                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 1,color:"black" } }}
+                  InputProps={{ sx: { bgcolor: 'white', borderRadius: 0, color: 'black' } }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -168,19 +166,10 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
               </Grid>
             </Grid>
 
-            {/* Status message
-            {status && (
-              <Typography sx={{ mt: 2, color: status.startsWith('✅') ? 'lightgreen' : 'red' }}>
-                {status}
-              </Typography>
-            )} */}
+           
           </Box>
         </Grid>
       </Container>
     </Box>
   );
 }
-
-// ----------------------------------------------------------------------
-
-// The HomeFooter and HomeFooterProps have been removed as per your request

@@ -5,7 +5,7 @@ import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
 import Alert from '@mui/material/Alert';
 import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-
+import { Toaster } from 'react-hot-toast';
 import { usePathname } from 'src/routes/hooks';
 
 import { useBoolean } from 'src/hooks/use-boolean';
@@ -141,6 +141,9 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
       sx={{ backgroundColor: 'black' }}
     >
       <Main>{children}</Main>
+
+      {/* Toast container */}
+      <Toaster position="top-right" reverseOrder={false} />
     </LayoutSection>
   );
 }

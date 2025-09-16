@@ -1,7 +1,7 @@
 'use client';
 
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
-
+import toast from 'react-hot-toast';
 import { useState } from 'react';
 
 import { useTheme } from '@mui/material/styles';
@@ -46,10 +46,10 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
 
       if (!res.ok) throw new Error('Failed to send message');
 
-      setStatus('✅ Message sent successfully!');
+      toast.success('✅ Message sent successfully!');
       setFormData({ firstname: '', lastname: '', email: '', message: '' });
     } catch (err) {
-      setStatus('❌ Something went wrong. Please try again.');
+      toast.error('❌ Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -155,12 +155,12 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
               </Grid>
             </Grid>
 
-            {/* Status message */}
+            {/* Status message
             {status && (
               <Typography sx={{ mt: 2, color: status.startsWith('✅') ? 'lightgreen' : 'red' }}>
                 {status}
               </Typography>
-            )}
+            )} */}
           </Box>
         </Grid>
       </Container>

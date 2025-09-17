@@ -11,7 +11,7 @@ import { useTheme } from '@mui/material/styles';
 import { RouterLink } from 'src/routes/components';
 
 import { logoClasses } from './classes';
-import logo from '../../assets/icons/mahilogo.jpeg';
+import logo from '../../../public/upload/mahilogo.jpeg';
 // ----------------------------------------------------------------------
 
 export type LogoProps = BoxProps & {

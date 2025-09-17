@@ -3,11 +3,11 @@
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
 
 import Alert from '@mui/material/Alert';
-import { Typography, Box } from '@mui/material';
+import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Toaster } from 'react-hot-toast';
 import { usePathname } from 'src/routes/hooks';
-import Link from 'next/link';
+
 import { useBoolean } from 'src/hooks/use-boolean';
 
 import { Logo } from 'src/components/logo';
@@ -90,15 +90,7 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
                 {/* -- Logo -- */}
 
                 <Logo />
-                <Typography
-                  sx={{
-                    pl: '10px',
-                    color: '#e6e6e6',
-                    letterSpacing: 0.5,
-                    fontSize: '12px',
-                    fontFamily: "'Century Gothic', 'Futura', 'Poppins', 'Montserrat', sans-serif",
-                  }}
-                >
+                <Typography sx={{ pl: '10px', fontSize: '13px' }}>
                   Maahi Dev&apos;s Portfolio
                 </Typography>
               </>
@@ -106,41 +98,14 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
             rightArea: (
               <>
                 {/* -- Nav desktop -- */}
-                <Box
+                <NavDesktop
+                  data={navData}
                   sx={{
                     display: 'none',
+
                     [theme.breakpoints.up(layoutQuery)]: { mr: 2.5, display: 'flex' },
-                    gap: 3,
-                    alignItems: 'center',
                   }}
-                >
-                  {navData.map((item) => (
-                    <Link
-                      key={item.title}
-                      href={item.path}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        textDecoration: 'none',
-                        color: 'inherit',
-                      }}
-                    >
-                      {/* {item.icon} */}
-                      <Typography
-                        sx={{
-                          color: '#e6e6e6',
-                          letterSpacing: 0.5,
-                          fontSize: '12px',
-                          fontFamily:
-                            "'Century Gothic', 'Futura', 'Poppins', 'Montserrat', sans-serif",
-                        }}
-                      >
-                        {item.title}
-                      </Typography>
-                    </Link>
-                  ))}
-                </Box>
+                />
 
                 {/* <Box display="flex" alignItems="center" gap={{ xs: 1, sm: 1.5 }}>
                  

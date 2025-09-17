@@ -1,10 +1,15 @@
 import { paths } from 'src/routes/paths';
-
+import { SxProps, Theme } from '@mui/material/styles';
 import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
-
-export const navData = [
+type NavItem = {
+  title: string;
+  path: string;
+  icon: React.ReactNode;
+  sx?: SxProps<Theme>; // ✅ allow sx styling per item
+};
+export const navData: NavItem[] = [
   { title: 'Home', path: '/', icon: <Iconify width={22} icon="solar:home-2-bold-duotone" /> },
   {
     title: 'Writing & Reporting',
@@ -12,9 +17,10 @@ export const navData = [
     icon: <Iconify width={22} icon="solar:atom-bold-duotone" />,
   },
   {
-    title: 'photojournalism',
+    title: 'Photojournalism',
     path: paths.journalism,
     icon: <Iconify width={22} icon="solar:atom-bold-duotone" />,
+    sx: {  fontSize: '66px' },
   },
   {
     title: 'Design',
@@ -24,7 +30,8 @@ export const navData = [
   {
     title: 'Broadcast Journalism',
     path: paths.broadcast,
-    icon: <Iconify width={22} icon="solar:microphone-bold-duotone" />, // you can pick any icon
+    icon: <Iconify width={22} icon="solar:microphone-bold-duotone" />,
+    sx: { fontFamily: "'Merriweather', serif", fontSize: '16px' },
   },
   // {
   //   title: 'Pages',

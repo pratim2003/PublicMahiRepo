@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev -p 8082",
     "start": "next start -p 8082",
-    "build": "next build",
+ 
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "fm:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
@@ -19,7 +19,8 @@
     "dev:ts": "yarn dev & yarn ts:watch",
     "ts": "tsc --noEmit --incremental",
     "ts:watch": "yarn ts --watch",
-    "start:out": "npx serve@latest out -p 8082"
+    "start:out": "npx serve@latest out -p 8082",
+  "build": "next build && next export"
   },
   "engines": {
     "node": "20.x"

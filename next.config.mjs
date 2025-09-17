@@ -73,6 +73,7 @@ const nextConfig = {
 
   // ✅ Add this block
   images: {
+    unoptimized: true, 
     remotePatterns: [
       {
         protocol: "https",

@@ -46,7 +46,7 @@ export const metadata = {
   icons: [
     {
       rel: 'icon',
-      url: `${CONFIG.assetsDir}/mahilogo.avif`,
+      url: `${CONFIG.assetsDir}/upload/mahilogo.avif`,
     },
   ],
 };

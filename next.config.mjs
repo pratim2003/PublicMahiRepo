@@ -80,6 +80,7 @@ const nextConfig = {
         pathname: "/api/uploads/**",
       },
     ],
+    unoptimized: true,
   },
 
   ...(isStaticExport === 'true' && {

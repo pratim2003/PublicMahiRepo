@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+
 import { Box, Grid, Container, Typography } from '@mui/material';
 
 // ----------------------------------------------------------------------
@@ -8,7 +9,7 @@ import { Box, Grid, Container, Typography } from '@mui/material';
 export function ComponentsView({ homeData }: { homeData: any }) {
   return (
     <Box sx={{ bgcolor: 'black', color: 'white', py: { xs: 4, md: 6 }, pb: { xs: 8, md: 10 } }}>
-      <Container  sx={{ maxWidth: '950px !important' }}>
+      <Container sx={{ maxWidth: '950px !important' }}>
         {/* Heading */}
         <Typography
           sx={{

@@ -2,7 +2,6 @@
 
 import type { BoxProps } from '@mui/material/Box';
 
-import Image from 'next/image';
 import { useId, forwardRef } from 'react';
 
 import Box from '@mui/material/Box';
@@ -11,7 +10,6 @@ import { useTheme } from '@mui/material/styles';
 import { RouterLink } from 'src/routes/components';
 
 import { logoClasses } from './classes';
-import logo from '../../../public/upload/mahilogo.avif';
 // ----------------------------------------------------------------------
 
 export type LogoProps = BoxProps & {
@@ -59,14 +57,7 @@ export const Logo = forwardRef<HTMLDivElement, LogoProps>(
     *
     */
 
- const singleLogo = (
-  <img 
-    src="/upload/mahilogo.jpeg" 
-    alt="logo" 
-    width={500} 
-    height={40} 
-  />
-);
+    const singleLogo = <img src="/upload/mahilogo.jpeg" alt="logo" width={500} height={40} />;
 
     const fullLogo = (
       <svg

@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useState } from 'react';
 
 import { Box, Grid, Container, Typography } from '@mui/material';
@@ -97,7 +96,13 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
                 alt="Home"
                 width={300}
                 height={350}
-                style={{ borderRadius: '6px', objectFit: 'cover', borderColor: '#fff', borderWidth: 2, borderStyle: 'solid' }}
+                style={{
+                  borderRadius: '6px',
+                  objectFit: 'cover',
+                  borderColor: '#fff',
+                  borderWidth: 2,
+                  borderStyle: 'solid',
+                }}
               />
             )}
           </Grid>

@@ -1,5 +1,6 @@
-import mongoose, { Schema, model } from 'mongoose';
 import type { Document } from 'mongoose';
+
+import mongoose, { model, Schema } from 'mongoose';
 
 interface contactus extends Document {
   firstname: string;
@@ -14,7 +15,6 @@ const contactusSchema = new Schema<contactus>({
   message: { type: String, required: true },
   email: { type: String, required: true },
 });
-
 
 // ✅ Correct way: use mongoose.models
 const contactusModel =

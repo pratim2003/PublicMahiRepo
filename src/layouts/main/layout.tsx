@@ -49,8 +49,8 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
       <Box
         component="header"
         sx={{
-          position: {xs: 'sticky', md: 'fixed'}, // or 'fixed' if you prefer
-          mt: {xs: '0px', md: 3},
+          position: { xs: 'sticky', md: 'fixed' }, // or 'fixed' if you prefer
+          mt: { xs: '0px', md: 3 },
           // pt: {xs: 1, md: 0},
           top: 0,
           left: 0,

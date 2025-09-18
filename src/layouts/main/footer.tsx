@@ -1,12 +1,14 @@
 'use client';
 
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
-import contact from './contact';
+
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 import { useTheme } from '@mui/material/styles';
 import { Box, Grid, Button, Container, TextField, Typography } from '@mui/material';
+
+import contact from './contact';
 
 export type FooterProps = {
   layoutQuery: Breakpoint;
@@ -43,7 +45,7 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify(formData),
       // });
-      const res = await contact(formData)
+      const res = await contact(formData);
       if (!res.ok) throw new Error('Failed to send message');
       toast.success('✅ Message sent successfully!');
       setFormData({ firstname: '', lastname: '', email: '', message: '' });

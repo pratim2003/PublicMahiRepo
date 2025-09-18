@@ -98,8 +98,12 @@
 const nextConfig = {
   trailingSlash: true,
   env: {
-    BUILD_STATIC_EXPORT: 'false', // server mode (keeps API routes working)
+    BUILD_STATIC_EXPORT: 'true', // server mode (keeps API routes working)
   },
+    images: {
+    unoptimized: true,
+  },
+  output:'export',
   modularizeImports: {
     '@mui/icons-material': {
       transform: '@mui/icons-material/{{member}}',

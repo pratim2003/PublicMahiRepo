@@ -85,12 +85,22 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
           {/* Right Image */}
           <Grid item xs={12} md={5} display="flex" justifyContent="center">
             {homeData.image && (
-              <Image
+              // <Image
+              //   src={`/${homeData.image}`}
+              //   alt="Home"
+              //   width={250}
+              //   height={300}
+              //   style={{ borderRadius: '6px', objectFit: 'cover' }}
+              // />
+              <img
                 src={`/${homeData.image}`}
-                alt="Home"
-                width={250}
-                height={300}
-                style={{ borderRadius: '6px', objectFit: 'cover' }}
+                alt="Threat Timeline"
+                style={{
+                  width: '100%',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                  height: '500px', // Default to desktop height
+                  maxHeight: '200px', // Responsive for xs screens
+                }}
               />
             )}
           </Grid>

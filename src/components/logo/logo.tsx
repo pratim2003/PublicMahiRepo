@@ -59,7 +59,14 @@ export const Logo = forwardRef<HTMLDivElement, LogoProps>(
     *
     */
 
-    const singleLogo = <Image src={logo} alt="logo" width={500} height={40} />;
+ const singleLogo = (
+  <img 
+    src="/upload/mahilogo.jpeg" 
+    alt="logo" 
+    width={500} 
+    height={40} 
+  />
+);
 
     const fullLogo = (
       <svg

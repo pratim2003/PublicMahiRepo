@@ -18,7 +18,7 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
       sx={{
         backgroundColor: '#000',
         color: '#fff',
-        py: { xs: 6, md: 5 },
+        py: { xs: 8, md: 10 },
       }}
     >
       <Container sx={{ maxWidth: '950px !important' }}>
@@ -94,13 +94,10 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
               // />
               <img
                 src={`/${homeData.image}`}
-                alt="Threat Timeline"
-                style={{
-                  width: '100%',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-                  height: '500px', // Default to desktop height
-                  maxHeight: '200px', // Responsive for xs screens
-                }}
+                alt="Home"
+                width={300}
+                height={350}
+                style={{ borderRadius: '6px', objectFit: 'cover', borderColor: '#fff', borderWidth: 2, borderStyle: 'solid' }}
               />
             )}
           </Grid>

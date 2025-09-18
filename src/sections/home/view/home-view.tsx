@@ -21,7 +21,7 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
         py: { xs: 6, md: 5 },
       }}
     >
-      <Container sx={{ maxWidth: '1000px !important' }}>
+      <Container sx={{ maxWidth: '950px !important' }}>
         <Grid container spacing={6} alignItems="center">
           {/* Left Content */}
           <Grid item xs={12} md={7}>

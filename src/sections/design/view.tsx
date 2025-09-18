@@ -22,7 +22,7 @@ export function DesignView({ broadcastData }: { broadcastData: any[] }) {
 
   return (
     <Box sx={{ bgcolor: 'black', color: 'white', py: 6 }}>
-      <Container sx={{ maxWidth: '1000px !important' }}>
+      <Container sx={{ maxWidth: '950px !important' }}>
         {' '}
         {/* Header */}
         <MotionContainer sx={{ textAlign: 'center', mb: 6 }}>

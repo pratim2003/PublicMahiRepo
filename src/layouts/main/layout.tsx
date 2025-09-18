@@ -3,11 +3,11 @@
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
 
 import Alert from '@mui/material/Alert';
-import { Typography } from '@mui/material';
+import { Typography, Box, Container } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Toaster } from 'react-hot-toast';
 import { usePathname } from 'src/routes/hooks';
-
+import Link from 'next/link';
 import { useBoolean } from 'src/hooks/use-boolean';
 
 import { Logo } from 'src/components/logo';
@@ -38,112 +38,110 @@ export type MainLayoutProps = {
 
 export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
   const theme = useTheme();
-
   const pathname = usePathname();
-
   const mobileNavOpen = useBoolean();
-
-  const homePage = pathname === '/';
-
   const layoutQuery: Breakpoint = 'md';
-
   const navData = data?.nav ?? mainNavData;
 
   return (
-    <LayoutSection
-      /** **************************************
-       * Header
-       *************************************** */
-      headerSection={
-        <HeaderSection
-          layoutQuery={layoutQuery}
+    <>
+      {/* ---------- Full-width header (outside any centered parent) ---------- */}
+      <Box
+        component="header"
+        sx={{
+          position: 'sticky', // or 'fixed' if you prefer
+          top: 0,
+          left: 0,
+          width: '100vw', // span the viewport
+          zIndex: 1300,
+          backgroundColor: 'black',
+        }}
+      >
+        {/* Content is centered inside the Container, but the header wrapper is full-width */}
+        <Container
+          maxWidth="xl"
           sx={{
-            ...header?.sx,
-            color: 'white',
-
-            top: 0,
-            left: 0,
-            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between', // pushes left block to left, right block to right
+            py: 1,
+            px: { xs: 2, md: 5 },
           }}
-          slots={{
-            topArea: (
-              <Alert severity="info" sx={{ display: 'none', borderRadius: 0 }}>
-                This is an info Alert.
-              </Alert>
-            ),
-            leftArea: (
-              <>
-                {/* -- Nav mobile -- */}
-                <MenuButton
-                  onClick={mobileNavOpen.onTrue}
-                  sx={{
-                    mr: 1,
-                    ml: -1,
-                    [theme.breakpoints.up(layoutQuery)]: { display: 'none' },
-                  }}
-                />
-                <NavMobile
-                  data={navData}
-                  open={mobileNavOpen.value}
-                  onClose={mobileNavOpen.onFalse}
-                />
-                {/* -- Logo -- */}
+        >
+          {/* Left block */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <MenuButton
+              onClick={mobileNavOpen.onTrue}
+              sx={{
+                mr: 1,
+                ml: -1,
+                [theme.breakpoints.up(layoutQuery)]: { display: 'none' },
+              }}
+            />
+            <Logo />
+            <Typography
+              sx={{
+                pl: '10px',
+                color: '#e6e6e6',
+                letterSpacing: 0.5,
+                fontSize: '12px',
+                fontFamily: "'Century Gothic', 'Futura', 'Poppins', 'Montserrat', sans-serif",
+              }}
+            >
+              Maahi Dev&apos;s Portfolio
+            </Typography>
+          </Box>
 
-                <Logo />
-                <Typography sx={{ pl: '10px', fontSize: '13px' }}>
-                  Maahi Dev&apos;s Portfolio
+          {/* Right block (desktop links) */}
+          <Box
+            sx={{
+              display: 'none',
+              [theme.breakpoints.up(layoutQuery)]: { display: 'flex' },
+              gap: 3,
+              alignItems: 'center',
+            }}
+          >
+            {navData.map((item) => (
+              <Link
+                key={item.title}
+                href={item.path}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                }}
+              >
+                <Typography
+                  sx={{
+                    color: '#e6e6e6',
+                    letterSpacing: 0.5,
+                    fontSize: '12px',
+                    fontFamily: "'Century Gothic', 'Futura', 'Poppins', 'Montserrat', sans-serif",
+                  }}
+                >
+                  {item.title}
                 </Typography>
-              </>
-            ),
-            rightArea: (
-              <>
-                {/* -- Nav desktop -- */}
-                <NavDesktop
-                  data={navData}
-                  sx={{
-                    display: 'none',
+              </Link>
+            ))}
+          </Box>
+        </Container>
 
-                    [theme.breakpoints.up(layoutQuery)]: { mr: 2.5, display: 'flex' },
-                  }}
-                />
+        {/* Mobile drawer (keeps it at top-level so it overlays correctly) */}
+        <NavMobile data={navData} open={mobileNavOpen.value} onClose={mobileNavOpen.onFalse} />
+      </Box>
 
-                {/* <Box display="flex" alignItems="center" gap={{ xs: 1, sm: 1.5 }}>
-                 
-                  <SettingsButton />
-                 
-                  <SignInButton />
-                 
-                  <Button
-                    variant="contained"
-                    rel="noopener"
-                    target="_blank"
-                    href={paths.minimalStore}
-                    sx={{
-                      display: 'none',
-                      [theme.breakpoints.up(layoutQuery)]: { display: 'inline-flex' },
-                    }}
-                  >
-                    Purchase
-                  </Button>
-                </Box>   */}
-              </>
-            ),
-          }}
-        />
-      }
-      /** **************************************
-       * Footer
-       *************************************** */
-      footerSection={<Footer layoutQuery={layoutQuery} />}
-      /** **************************************
-       * Style
-       *************************************** */
-      sx={{ backgroundColor: 'black' }}
-    >
-      <Main>{children}</Main>
+      {/* ---------- Page content (leave LayoutSection / Footer as-is) ---------- */}
+      <LayoutSection
+        footerSection={<Footer layoutQuery={layoutQuery} />}
+        sx={{ backgroundColor: 'black' }}
+      >
+        <Main>{children}</Main>
 
-      {/* Toast container */}
-      <Toaster position="top-right" reverseOrder={false} />
-    </LayoutSection>
+        {/* Toast container */}
+        <Toaster position="top-right" reverseOrder={false} />
+      </LayoutSection>
+    </>
   );
 }

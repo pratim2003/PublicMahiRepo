@@ -1,7 +1,7 @@
 'use client';
 
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
-
+import contact from './contact';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -37,16 +37,14 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
     e.preventDefault();
     setLoading(true);
     setStatus(null);
-
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/fpii/contactus`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
+      // const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/fpii/contactus`, {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(formData),
+      // });
+      const res = await contact(formData)
       if (!res.ok) throw new Error('Failed to send message');
-
       toast.success('✅ Message sent successfully!');
       setFormData({ firstname: '', lastname: '', email: '', message: '' });
     } catch (err) {

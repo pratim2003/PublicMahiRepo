@@ -1,7 +1,5 @@
-import type mongoose from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 import type { Document } from 'mongoose';
-
-import { model, Schema, models } from 'mongoose';
 
 interface contactus extends Document {
   firstname: string;
@@ -10,26 +8,17 @@ interface contactus extends Document {
   email: string;
 }
 
-const contactusSchema: Schema<contactus> = new Schema({
-  firstname: {
-    type: String,
-    required: true,
-  },
-  lastname: {
-    type: String,
-    required: true,
-  },
-  message: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
+const contactusSchema = new Schema<contactus>({
+  firstname: { type: String, required: true },
+  lastname: { type: String, required: true },
+  message: { type: String, required: true },
+  email: { type: String, required: true },
 });
 
+
+// ✅ Correct way: use mongoose.models
 const contactusModel =
-  (models.contactus as mongoose.Model<contactus>) || model<contactus>('contactus', contactusSchema);
+  (mongoose.models.contactus as mongoose.Model<contactus>) ||
+  model<contactus>('contactus', contactusSchema);
 
 export default contactusModel;

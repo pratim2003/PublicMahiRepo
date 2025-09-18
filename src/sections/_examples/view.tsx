@@ -12,7 +12,7 @@ import { varFade, MotionContainer } from 'src/components/animate';
 export function ComponentsView({ homeData }: { homeData: any }) {
   return (
     <Box sx={{ bgcolor: 'black', color: 'white', py: 6 }}>
-      <Container sx={{ maxWidth: '1000px !important' }}>
+      <Container sx={{ maxWidth: '950px !important' }}>
         {' '}
         {/* Header */}
         <MotionContainer sx={{ textAlign: 'center', mb: 6 }}>
@@ -20,7 +20,7 @@ export function ComponentsView({ homeData }: { homeData: any }) {
             <Typography
               sx={{
                 fontFamily: "'Merriweather', serif",
-                fontSize: { xs: '2rem', md: '5.2rem' },
+                fontSize: { xs: '2rem', md: '4.9rem' },
                 fontWeight: 400,
                 mb: 5,
                 textTransform: 'uppercase',
@@ -74,7 +74,6 @@ export function ComponentsView({ homeData }: { homeData: any }) {
             By {homeData[0]?.authors?.join(' & ')}
           </Typography>
         </MotionContainer>
-        
         {/* </Box> */}
         <Box
           sx={{
@@ -92,16 +91,18 @@ export function ComponentsView({ homeData }: { homeData: any }) {
 
               {/* First image after 2nd paragraph */}
               {index === 1 && homeData[0]?.images[0] && (
-                <Box sx={{ textAlign: 'center', my: 6 }}>
+                <Box sx={{ textAlign: 'center', my: 6,  }}>
                   <img
                     src={`/${homeData[0]?.images[0]}`}
                     alt="Threat Timeline"
                     style={{
-                      height: '500px',
                       width: '100%',
                       boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                      height: '500px', // Default to desktop height
+                      maxHeight: '200px', // Responsive for xs screens
                     }}
                   />
+
                   <Box
                     component="figcaption"
                     sx={{
@@ -128,7 +129,7 @@ export function ComponentsView({ homeData }: { homeData: any }) {
                   <Box
                     sx={{
                       height: '670px',
-                      minWidth: '800px',
+                      Width: '800px',
                       backgroundColor: '#f9f9f9',
                       boxShadow: '0 6px 18px rgba(0,0,0,0.2)',
                       p: 2,

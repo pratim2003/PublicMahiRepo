@@ -97,7 +97,7 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
 
   return (
     <Box sx={{ bgcolor: 'black', color: 'white', py: 6 }}>
-      <Container sx={{ maxWidth: '1000px !important' }}>
+      <Container sx={{ maxWidth: '950px !important' }}>
         {/* Header */}
         <MotionContainer>
           <m.div variants={varFade().inUp}>

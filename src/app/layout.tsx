@@ -46,10 +46,12 @@ export const metadata = {
   icons: [
     {
       rel: 'icon',
-      url: `${CONFIG.assetsDir}/mahilogo.jpeg`,
+      url: `${CONFIG.assetsDir}/upload/mahilogo.avif`,
     },
   ],
 };
+
+
 
 type Props = {
   children: React.ReactNode;

@@ -64,6 +64,7 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
         position: 'relative',
         bgcolor: '#000',
         color: '#fff',
+        pl:  {xs: 7} , 
         ...sx,
       }}
     >

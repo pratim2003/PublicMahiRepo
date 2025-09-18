@@ -18,7 +18,7 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
       sx={{
         backgroundColor: '#000',
         color: '#fff',
-        py: { xs: 6, md: 5 },
+        py: { xs: 8, md: 10 },
       }}
     >
       <Container sx={{ maxWidth: '950px !important' }}>
@@ -85,12 +85,19 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
           {/* Right Image */}
           <Grid item xs={12} md={5} display="flex" justifyContent="center">
             {homeData.image && (
-              <Image
+              // <Image
+              //   src={`/${homeData.image}`}
+              //   alt="Home"
+              //   width={250}
+              //   height={300}
+              //   style={{ borderRadius: '6px', objectFit: 'cover' }}
+              // />
+              <img
                 src={`/${homeData.image}`}
                 alt="Home"
-                width={250}
-                height={300}
-                style={{ borderRadius: '6px', objectFit: 'cover' }}
+                width={300}
+                height={350}
+                style={{ borderRadius: '6px', objectFit: 'cover', borderColor: '#fff', borderWidth: 2, borderStyle: 'solid' }}
               />
             )}
           </Grid>

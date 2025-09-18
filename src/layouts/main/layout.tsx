@@ -49,7 +49,9 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
       <Box
         component="header"
         sx={{
-          position: 'sticky', // or 'fixed' if you prefer
+          position: {xs: 'sticky', md: 'fixed'}, // or 'fixed' if you prefer
+          mt: {xs: '0px', md: 3},
+          // pt: {xs: 1, md: 0},
           top: 0,
           left: 0,
           width: '100vw', // span the viewport
@@ -64,12 +66,12 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between', // pushes left block to left, right block to right
-            py: 1,
-            px: { xs: 2, md: 5 },
+            // mt: 3,
+            px: { xs: 2, md: 7 },
           }}
         >
           {/* Left block */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
             <MenuButton
               onClick={mobileNavOpen.onTrue}
               sx={{
@@ -78,13 +80,14 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
                 [theme.breakpoints.up(layoutQuery)]: { display: 'none' },
               }}
             />
-            <Logo />
+            <Logo sx={{ width: 50 }} />
             <Typography
               sx={{
                 pl: '10px',
                 color: '#e6e6e6',
                 letterSpacing: 0.5,
-                fontSize: '12px',
+                fontSize: '11px',
+                // WebkitTextStroke: '0.1px #fff',
                 fontFamily: "'Century Gothic', 'Futura', 'Poppins', 'Montserrat', sans-serif",
               }}
             >
@@ -117,8 +120,12 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
                   sx={{
                     color: '#e6e6e6',
                     letterSpacing: 0.5,
-                    fontSize: '12px',
+                    fontSize: '11px',
                     fontFamily: "'Century Gothic', 'Futura', 'Poppins', 'Montserrat', sans-serif",
+                    '&:hover': {
+                      color: '#b5863a',
+                      cursor: 'pointer', // Optional: adds pointer cursor
+                    },
                   }}
                 >
                   {item.title}
@@ -129,7 +136,12 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
         </Container>
 
         {/* Mobile drawer (keeps it at top-level so it overlays correctly) */}
-        <NavMobile data={navData} open={mobileNavOpen.value} onClose={mobileNavOpen.onFalse} />
+        <NavMobile
+          data={navData}
+          open={mobileNavOpen.value}
+          onClose={mobileNavOpen.onFalse}
+          sx={{ backgroundColor: 'black' }}
+        />
       </Box>
 
       {/* ---------- Page content (leave LayoutSection / Footer as-is) ---------- */}

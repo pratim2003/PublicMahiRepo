@@ -1,15 +1,14 @@
 'use client';
 
 import React from 'react';
-
 import { Box, Grid, Container, Typography } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
 export function ComponentsView({ homeData }: { homeData: any }) {
   return (
-    <Box sx={{ bgcolor: 'black', color: 'white', py: 6, pb: 15 }}>
-      <Container maxWidth="lg">
+    <Box sx={{ bgcolor: 'black', color: 'white', py: { xs: 4, md: 6 }, pb: { xs: 8, md: 10 } }}>
+      <Container  sx={{ maxWidth: '950px !important' }}>
         {/* Heading */}
         <Typography
           sx={{
@@ -17,7 +16,7 @@ export function ComponentsView({ homeData }: { homeData: any }) {
             fontSize: { xs: '2rem', md: '5.2rem' },
             fontWeight: 400,
             textAlign: 'center',
-            mb: 6,
+            mb: { xs: 4, md: 6 },
             textTransform: 'uppercase',
           }}
         >
@@ -27,32 +26,39 @@ export function ComponentsView({ homeData }: { homeData: any }) {
         {/* Image + Content */}
         <Grid container spacing={4} alignItems="flex-start">
           {/* Image */}
-          <Grid item xs={12} md={6}>
-            <img
-              src={`/${homeData[0]?.image}`}
-              alt={homeData[0]?.heading}
-              style={{
-                width: '80%',
-                height: '100%', // fill available height
-                maxHeight: '350px', // control max height
-                objectFit: 'cover', // keeps aspect ratio, crops nicely
-                borderRadius: '8px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-                marginLeft: '20%',
+          <Grid item xs={12} md={7}>
+            <Box
+              sx={{
+                width: { xs: '100%', sm: '100%', md: '100%' },
+                mx: { xs: 'auto', md: 0 },
               }}
-            />
+            >
+              <img
+                src={`/${homeData[0]?.image}`}
+                alt={homeData[0]?.heading}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: '350px',
+                  objectFit: 'cover',
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                }}
+              />
+            </Box>
           </Grid>
 
           {/* Text */}
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={5}>
             <Typography
               sx={{
                 fontFamily: "'Roboto Slab', serif",
-                fontSize: '1.05rem',
-                lineHeight: 1.9,
+                fontSize: { xs: '1rem', md: '1.05rem' },
+                lineHeight: 1.8,
                 color: '#ccc',
                 textAlign: 'justify',
-                marginRight: '30%',
+                px: { xs: 1, sm: 2, md: 0 }, // padding on small screens
+                // mr: { md: '20%' }, // Only apply right margin on desktop
               }}
             >
               {homeData[0]?.content}
@@ -63,16 +69,3 @@ export function ComponentsView({ homeData }: { homeData: any }) {
     </Box>
   );
 }
-
-// Shared styles
-const bodyStyle = {
-  fontFamily: "'Roboto Slab', serif",
-  fontSize: '1.2rem',
-  lineHeight: 1.9,
-  mb: 3,
-};
-
-const italicStyle = {
-  ...bodyStyle,
-  fontStyle: 'italic',
-};

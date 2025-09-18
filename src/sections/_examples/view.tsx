@@ -92,16 +92,24 @@ export function ComponentsView({ homeData }: { homeData: any }) {
               {/* First image after 2nd paragraph */}
               {index === 1 && homeData[0]?.images[0] && (
                 <Box sx={{ textAlign: 'center', my: 6 }}>
-                  <img
-                    src={`/${homeData[0]?.images[0]}`}
-                    alt="Threat Timeline"
-                    style={{
+                  <Box
+                    sx={{
                       width: '100%',
+                      height: { xs: '200px', md: '500px' },
                       boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-                      height: '500px', // Default to desktop height
-                      maxHeight: '200px', // Responsive for xs screens
+                      overflow: 'hidden', // prevent image overflow
                     }}
-                  />
+                  >
+                    <img
+                      src={`/${homeData[0]?.images[0]}`}
+                      alt="Threat Timeline"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover', // ensures it scales properly
+                      }}
+                    />
+                  </Box>
 
                   <Box
                     component="figcaption"
@@ -124,24 +132,30 @@ export function ComponentsView({ homeData }: { homeData: any }) {
                     display: 'flex',
                     justifyContent: 'center',
                     my: 6,
+                    px: { xs: 2, sm: 4, md: 0 }, // Padding on small screens
                   }}
                 >
                   <Box
                     sx={{
-                      height: '670px',
-                      Width: '800px',
+                      width: { xs: '100%', sm: '90%', md: '800px' },
+                      height: { xs: 'auto', md: '580px' },
                       backgroundColor: '#f9f9f9',
                       boxShadow: '0 6px 18px rgba(0,0,0,0.2)',
-                      p: 2,
+                      p: { xs: 2, sm: 3 },
+                      borderRadius: '12px',
                     }}
                   >
                     <img
                       src={`/${homeData[0]?.images[1]}`}
                       alt="School Safety Statistics"
                       style={{
+                        width: '100%',
+                        height: 'auto',
                         borderRadius: '12px',
+                        display: 'block',
                       }}
                     />
+
                     <Box
                       component="figcaption"
                       sx={{

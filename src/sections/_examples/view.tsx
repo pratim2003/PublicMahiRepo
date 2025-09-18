@@ -91,7 +91,7 @@ export function ComponentsView({ homeData }: { homeData: any }) {
 
               {/* First image after 2nd paragraph */}
               {index === 1 && homeData[0]?.images[0] && (
-                <Box sx={{ textAlign: 'center', my: 6,  }}>
+                <Box sx={{ textAlign: 'center', my: 6 }}>
                   <img
                     src={`/${homeData[0]?.images[0]}`}
                     alt="Threat Timeline"

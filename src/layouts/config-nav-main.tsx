@@ -1,5 +1,7 @@
+import type { Theme, SxProps } from '@mui/material/styles';
+
 import { paths } from 'src/routes/paths';
-import { SxProps, Theme } from '@mui/material/styles';
+
 import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -20,7 +22,7 @@ export const navData: NavItem[] = [
     title: 'Photojournalism',
     path: paths.journalism,
     icon: <Iconify width={22} icon="solar:atom-bold-duotone" />,
-    sx: {  fontSize: '66px' },
+    sx: { fontSize: '66px' },
   },
   {
     title: 'Design',

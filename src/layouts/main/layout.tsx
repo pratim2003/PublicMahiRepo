@@ -2,12 +2,14 @@
 
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
 
-import Alert from '@mui/material/Alert';
-import { Typography, Box, Container } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { Toaster } from 'react-hot-toast';
-import { usePathname } from 'src/routes/hooks';
 import Link from 'next/link';
+import { Toaster } from 'react-hot-toast';
+
+import { useTheme } from '@mui/material/styles';
+import { Box, Container, Typography } from '@mui/material';
+
+import { usePathname } from 'src/routes/hooks';
+
 import { useBoolean } from 'src/hooks/use-boolean';
 
 import { Logo } from 'src/components/logo';
@@ -15,10 +17,8 @@ import { Logo } from 'src/components/logo';
 import { Main } from './main';
 import { Footer } from './footer';
 import { NavMobile } from './nav/mobile';
-import { NavDesktop } from './nav/desktop';
 import { MenuButton } from '../components/menu-button';
 import { LayoutSection } from '../core/layout-section';
-import { HeaderSection } from '../core/header-section';
 import { navData as mainNavData } from '../config-nav-main';
 
 import type { NavMainProps } from './nav/types';

@@ -1,4 +1,3 @@
-
 'use client';
 
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
@@ -40,11 +39,11 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
     setStatus(null);
 
     try {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/fpii/contactus`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData),
-  });
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/fpii/contactus`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
       if (!res.ok) throw new Error('Failed to send message');
 
@@ -64,7 +63,7 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
         position: 'relative',
         bgcolor: '#000',
         color: '#fff',
-        pl:  {xs: 7} , 
+        pl: { xs: 7 },
         ...sx,
       }}
     >
@@ -166,8 +165,6 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
                 </Button>
               </Grid>
             </Grid>
-
-           
           </Box>
         </Grid>
       </Container>

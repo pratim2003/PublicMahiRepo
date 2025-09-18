@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { useTheme } from '@mui/material/styles';
 import { Box, Grid, Button, Container, TextField, Typography } from '@mui/material';
 
-import contact from './contact';
+// import contact from './contact';
 
 export type FooterProps = {
   layoutQuery: Breakpoint;
@@ -40,12 +40,11 @@ export function Footer({ layoutQuery, sx }: FooterProps) {
     setLoading(true);
     setStatus(null);
     try {
-      // const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/fpii/contactus`, {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // });
-      const res = await contact(formData);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/fpii/contactus`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
       if (!res.ok) throw new Error('Failed to send message');
       toast.success('✅ Message sent successfully!');
       setFormData({ firstname: '', lastname: '', email: '', message: '' });

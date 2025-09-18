@@ -51,8 +51,8 @@ export function NavMobile({ data, open, onClose, slots, sx }: NavMobileProps) {
       }}
     >
       {slots?.topArea ?? (
-        <Box display="flex" sx={{ pt: 3, pb: 2, pl: 2.5 }}>
-          <Logo />
+        <Box display="flex" sx={{ pt: 5, pb: 2, pl: 2.5 }}>
+          {/* <Logo /> */}
         </Box>
       )}
 
@@ -68,9 +68,9 @@ export function NavMobile({ data, open, onClose, slots, sx }: NavMobileProps) {
 
       {slots?.bottomArea ?? (
         <Box gap={1.5} display="flex" sx={{ px: 2.5, py: 3 }}>
-          <SignInButton fullWidth />
+          {/* <SignInButton fullWidth /> */}
 
-          <Button
+          {/* <Button
             fullWidth
             variant="contained"
             rel="noopener"
@@ -78,7 +78,7 @@ export function NavMobile({ data, open, onClose, slots, sx }: NavMobileProps) {
             href={paths.minimalStore}
           >
             Purchase
-          </Button>
+          </Button> */}
         </Box>
       )}
     </Drawer>

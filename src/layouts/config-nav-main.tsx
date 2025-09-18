@@ -10,7 +10,7 @@ type NavItem = {
   sx?: SxProps<Theme>; // ✅ allow sx styling per item
 };
 export const navData: NavItem[] = [
-  { title: 'Home', path: '/', icon: <Iconify width={22} icon="solar:home-2-bold-duotone" /> },
+  // { title: 'Home', path: '/', icon: <Iconify width={22} icon="solar:home-2-bold-duotone" /> },
   {
     title: 'Writing & Reporting',
     path: paths.components,

@@ -107,6 +107,7 @@ export function BroadcastView({ broadcastData }: { broadcastData: any[] }) {
                 fontSize: { xs: '2rem', md: '5.2rem' },
                 fontWeight: 400,
                 mb: 2,
+                mt:6,
                 textTransform: 'uppercase',
                 letterSpacing: 1,
                 textAlign: 'center',

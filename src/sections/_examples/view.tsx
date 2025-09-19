@@ -6,17 +6,18 @@ import { m } from 'framer-motion';
 import { Box, Container, Typography } from '@mui/material';
 
 import { varFade, MotionContainer } from 'src/components/animate';
+import { AddBox } from '@mui/icons-material';
 
 // ----------------------------------------------------------------------
 
 export function ComponentsView({ homeData }: { homeData: any }) {
   return (
-    <Box sx={{ bgcolor: 'black', color: 'white', py: 6 }}>
-      <Container sx={{ maxWidth: '950px !important' }}>
+    <Box sx={{ bgcolor: 'black', color: 'white', pt: 13,pb: { xs: 8, md: 10 } }}>
+      <Container sx={{ maxWidth: '1000px !important' }}>
         {' '}
         {/* Header */}
-        <MotionContainer sx={{ textAlign: 'center', mb: 6 }}>
-          <m.div variants={varFade().inUp}>
+        <Box sx={{ textAlign: 'start', mb: 6 }} >
+          <Box >
             <Typography
               sx={{
                 fontFamily: "'Merriweather', serif",
@@ -31,9 +32,9 @@ export function ComponentsView({ homeData }: { homeData: any }) {
             >
               WRITING & REPORTING
             </Typography>
-          </m.div>
+          </Box>
 
-          <m.div variants={varFade().inLeft}>
+          <Box >
             <Typography
               sx={{
                 fontFamily: "'Roboto Slab', serif",
@@ -47,7 +48,7 @@ export function ComponentsView({ homeData }: { homeData: any }) {
             >
               {homeData[0]?.title}
             </Typography>
-          </m.div>
+          </Box>
 
           <Typography
             sx={{
@@ -73,7 +74,7 @@ export function ComponentsView({ homeData }: { homeData: any }) {
           >
             By {homeData[0]?.authors?.join(' & ')}
           </Typography>
-        </MotionContainer>
+        </Box>
         {/* </Box> */}
         <Box
           sx={{

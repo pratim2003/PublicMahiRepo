@@ -18,6 +18,7 @@ export function ComponentsView({ homeData }: { homeData: any }) {
             fontWeight: 400,
             textAlign: 'center',
             mb: { xs: 4, md: 6 },
+            mt:6,
             textTransform: 'uppercase',
           }}
         >

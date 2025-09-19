@@ -100,7 +100,7 @@ export function MainLayout({ sx, data, children, header }: MainLayoutProps) {
             sx={{
               display: 'none',
               [theme.breakpoints.up(layoutQuery)]: { display: 'flex' },
-              gap: 3,
+              gap: 5.2,
               alignItems: 'center',
             }}
           >

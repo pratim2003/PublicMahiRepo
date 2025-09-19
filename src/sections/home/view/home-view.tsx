@@ -21,10 +21,10 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
         py: { xs: 8, md: 10 },
       }}
     >
-      <Container sx={{ maxWidth: '950px !important' }}>
-        <Grid container spacing={6} alignItems="center">
+      <Container sx={{ maxWidth: '950px !important' }} >
+        <Grid container spacing={6} alignItems="center" mt={1}>
           {/* Left Content */}
-          <Grid item xs={12} md={7}>
+          <Grid item xs={12} md={8}>
             {/* Heading - Sans Serif */}
             <Typography
               variant="body2"
@@ -58,9 +58,9 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
               sx={{
                 fontFamily: "'Roboto Slab', serif",
                 mb: 4,
-                lineHeight: 2,
+                lineHeight: 1.6,
                 fontSize: '1.4rem',
-                fontWeight: 'lighter',
+                fontWeight: '300',
                 letterSpacing: '0.2px',
                 color: '#fff',
                 WebkitTextStroke: '0.5px #000',
@@ -83,7 +83,7 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
           </Grid>
 
           {/* Right Image */}
-          <Grid item xs={12} md={5} display="flex" justifyContent="center">
+          <Grid item xs={12} md={4} display="flex" justifyContent="center">
             {homeData.image && (
               // <Image
               //   src={`/${homeData.image}`}
@@ -95,9 +95,9 @@ export function HomeView({ homeData }: { homeData: HomeData }) {
               <img
                 src={`/${homeData.image}`}
                 alt="Home"
-                width={300}
-                height={350}
-                style={{ borderRadius: '6px', objectFit: 'cover', borderColor: '#fff', borderWidth: 2, borderStyle: 'solid' }}
+                width={250}
+                height={300}
+                style={{ borderRadius: '1px', objectFit: 'cover', borderColor: '#fff', borderWidth: 2, borderStyle: 'solid' }}
               />
             )}
           </Grid>

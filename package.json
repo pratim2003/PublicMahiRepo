@@ -21,7 +21,6 @@
     "ts:watch": "yarn ts --watch",
     "start:out": "npx serve@latest out -p 8082",
     "build": "next build"
-
   },
   "engines": {
     "node": "20.x"

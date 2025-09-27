@@ -5,13 +5,14 @@ import { ComponentsView } from 'src/sections/_examples/view';
 
 // ----------------------------------------------------------------------
 
-export const revalidate = false; // no revalidation, true static build
+// export const dynamic = 'force-static';
+export const revalidate = false;
 
 export default async function Page() {
-  try {
+  try {;
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL1}/api/fpii/write`, {
       cache: 'force-cache',
-      next: { revalidate: false },
+      next : {revalidate : false}
     });
     const data = await res.json();
     if (!data) {

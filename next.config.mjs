@@ -78,7 +78,7 @@
 const nextConfig = {
   trailingSlash: true,
   env: {
-    BUILD_STATIC_EXPORT: 'false', // or remove this if not needed
+    BUILD_STATIC_EXPORT: 'true', // or remove this if not needed
   },
   images: {
     unoptimized: true,

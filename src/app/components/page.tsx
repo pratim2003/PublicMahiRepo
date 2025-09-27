@@ -11,7 +11,7 @@ export default async function Page() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL1}/api/fpii/write`, {
       cache: 'force-cache',
-      // next: { revalidate: 30 },
+      next: { revalidate: false },
     });
     const data = await res.json();
     if (!data) {

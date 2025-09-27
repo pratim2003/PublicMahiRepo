@@ -1,5 +1,4 @@
 // import connect from 'src/lib/db';
-import { CONFIG } from 'src/config-global';
 // import ArticleModel from 'src/lib/modals/write';
 
 import { ComponentsView } from 'src/sections/_examples/view';
@@ -24,4 +23,3 @@ export default async function Page() {
     throw new Error(error);
   }
 }
-

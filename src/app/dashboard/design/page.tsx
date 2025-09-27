@@ -1,8 +1,10 @@
+import { Toaster } from 'react-hot-toast';
+
 import connect from 'src/lib/db';
 import { CONFIG } from 'src/config-global';
 import { DesignModel } from 'src/lib/modals/design';
+
 import { OverviewBankingView } from 'src/sections/overview/banking/view';
-import { Toaster } from 'react-hot-toast';
 // ----------------------------------------------------------------------
 export const revalidate = false;
 export const metadata = { title: `Design | Dashboard - ${CONFIG.appName}` };

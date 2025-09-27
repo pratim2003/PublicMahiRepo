@@ -1,8 +1,10 @@
+import { Toaster } from 'react-hot-toast';
+
 import connect from 'src/lib/db';
 import { CONFIG } from 'src/config-global';
 import photoModel from 'src/lib/modals/photoJounalism';
+
 import { OverviewAnalyticsView } from 'src/sections/overview/analytics/view';
-import { Toaster } from 'react-hot-toast';
 
 // ----------------------------------------------------------------------
 export const revalidate = false;

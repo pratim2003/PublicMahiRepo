@@ -48,10 +48,11 @@
 //     </div>
 //   );
 // }
+import toast from 'react-hot-toast';
 // components/DeployButton.tsx
 import React, { useState, useCallback } from 'react';
+
 import Button from '@mui/material/Button';
-import toast from 'react-hot-toast';
 
 export default function DeployButton() {
   const [loading, setLoading] = useState(false);
@@ -93,4 +94,3 @@ export default function DeployButton() {
     </Button>
   );
 }
-

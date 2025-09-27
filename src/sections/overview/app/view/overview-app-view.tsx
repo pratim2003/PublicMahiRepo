@@ -35,7 +35,7 @@ export function OverviewAppView({ homeData }: { homeData: HomeData }) {
   // State for editing
   const [isEditing, setIsEditing] = useState(false);
   const [status, setStatus] = useState('');
-const [showDeploy, setShowDeploy] = useState(false);
+  const [showDeploy, setShowDeploy] = useState(false);
   // Editable data including file
   const [editableData, setEditableData] = useState({
     heading: homeData.heading || '',
@@ -57,38 +57,36 @@ const [showDeploy, setShowDeploy] = useState(false);
   };
 
   // Handle form submit
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  try {
-    const formData = new FormData();
-    formData.append('heading', editableData.heading);
-    formData.append('body', editableData.body);
-    if (editableData.file) {
-      formData.append('file', editableData.file);
+    try {
+      const formData = new FormData();
+      formData.append('heading', editableData.heading);
+      formData.append('body', editableData.body);
+      if (editableData.file) {
+        formData.append('file', editableData.file);
+      }
+
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL1}/api/fpii/home`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error('Failed to update');
+
+      await res.json();
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      setIsEditing(false);
+      setShowDeploy(true);
+      router.refresh();
+      toast.success('Home content updated successfully!');
+    } catch (error) {
+      console.error(error);
+      toast.error('Failed to update content');
     }
-
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL1}/api/fpii/home`, {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (!res.ok) throw new Error('Failed to update');
-
-    await res.json();
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
-    setIsEditing(false);
-       setShowDeploy(true); 
-    router.refresh();
-    toast.success('Home content updated successfully!');
- 
-  } catch (error) {
-    console.error(error);
-    toast.error('Failed to update content');
-  }
-};
-
+  };
 
   return (
     <DashboardContent maxWidth="xl">
@@ -157,29 +155,28 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               {/* Edit Button */}
               {!isEditing && (
                 <>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => {
-                    setEditableData({
-                      heading: homeData.heading || '',
-                      body: homeData.body || '',
-                      file: null,
-                    });
-                    setIsEditing(true);
-                  }}
-                  sx={{ mt: 2 }}
-                >
-                  Edit
-                </Button>
-                              {showDeploy && (
-  <Box mt={3}>
-    <DeployButton />
-  </Box>
-)}</>
-                
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      setEditableData({
+                        heading: homeData.heading || '',
+                        body: homeData.body || '',
+                        file: null,
+                      });
+                      setIsEditing(true);
+                    }}
+                    sx={{ mt: 2 }}
+                  >
+                    Edit
+                  </Button>
+                  {showDeploy && (
+                    <Box mt={3}>
+                      <DeployButton />
+                    </Box>
+                  )}
+                </>
               )}
-
 
               {/* Edit Form */}
               {isEditing && (
@@ -233,7 +230,6 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                     >
                       Cancel
                     </Button>
-           
                   </Box>
                 </Box>
               )}

@@ -68,10 +68,6 @@ export function Section({
         <Typography variant="h3" sx={{ textAlign: 'center' }}>
           {title}
         </Typography>
-
-     
-     
-
       </div>
 
       <Box

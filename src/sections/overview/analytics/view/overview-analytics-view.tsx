@@ -1,11 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
 import Image from 'next/image';
-import { Box, Grid, Container, Typography, TextField, Button } from '@mui/material';
-import { DashboardContent } from 'src/layouts/dashboard';
 import toast from 'react-hot-toast';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+
+import { Box, Grid, Button, Container, TextField, Typography } from '@mui/material';
+
+import { DashboardContent } from 'src/layouts/dashboard';
+
 import DeployButton from '../../../../layouts/components/deploye-button';
 
 export function OverviewAnalyticsView({ journalismData }: { journalismData: any }) {
@@ -45,9 +48,9 @@ export function OverviewAnalyticsView({ journalismData }: { journalismData: any 
       if (!res.ok) throw new Error('Failed to update');
       await res.json();
       setIsEditing(false);
-   setShowDeploy(true); 
-      router.refresh();   
-       
+      setShowDeploy(true);
+      router.refresh();
+
       toast.success('Content updated successfully!');
     } catch (err) {
       console.error(err);
@@ -61,19 +64,23 @@ export function OverviewAnalyticsView({ journalismData }: { journalismData: any 
         <Container sx={{ maxWidth: '950px !important', position: 'relative' }}>
           {/* 🔹 Edit Button */}
           {!isEditing && (
-         
-            <Box sx={{ position: 'absolute', top: -30, display:'flex',flexDirection:'row', gap:2, right: 0 }}>
+            <Box
+              sx={{
+                position: 'absolute',
+                top: -30,
+                display: 'flex',
+                flexDirection: 'row',
+                gap: 2,
+                right: 0,
+              }}
+            >
               <>
-              <Button variant="contained" color="primary" onClick={() => setIsEditing(true)}>
-                Edit
-              </Button>  
-                          {showDeploy && (
-
-    <DeployButton />
- 
-)}</>
+                <Button variant="contained" color="primary" onClick={() => setIsEditing(true)}>
+                  Edit
+                </Button>
+                {showDeploy && <DeployButton />}
+              </>
             </Box>
-
           )}
 
           {/* 🔹 Edit Form */}
@@ -110,7 +117,7 @@ export function OverviewAnalyticsView({ journalismData }: { journalismData: any 
               />
 
               <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
-                <Button type="submit" variant="contained" color="primary" >
+                <Button type="submit" variant="contained" color="primary">
                   Save
                 </Button>
                 <Button
@@ -180,5 +187,3 @@ export function OverviewAnalyticsView({ journalismData }: { journalismData: any 
     </DashboardContent>
   );
 }
-
-       

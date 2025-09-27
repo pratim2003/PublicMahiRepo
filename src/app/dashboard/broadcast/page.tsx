@@ -1,8 +1,10 @@
+import { Toaster } from 'react-hot-toast';
+
 import connect from 'src/lib/db';
 import { CONFIG } from 'src/config-global';
 import { broadcatModel } from 'src/lib/modals/broadcast';
+
 import { OverviewBookingView } from 'src/sections/overview/booking/view';
-import { Toaster } from 'react-hot-toast';
 // ----------------------------------------------------------------------
 
 export const metadata = { title: `Broadcast | Dashboard - ${CONFIG.appName}` };
@@ -18,7 +20,7 @@ export default async function Page() {
   }
   return (
     <>
-      <OverviewBookingView broadcastData={data}/>
+      <OverviewBookingView broadcastData={data} />
       <Toaster position="top-right" reverseOrder={false} />
     </>
   );

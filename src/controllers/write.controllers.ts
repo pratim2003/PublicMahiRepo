@@ -139,7 +139,7 @@ export async function getArticle() {
 export async function createArticle(req: Request): Promise<any> {
   try {
     const contentType = req.headers.get('content-type') || '';
-    const data: any = {}; // <-- define once here
+    const data: any = {}; // define once
 
     if (contentType.includes('application/json')) {
       const { id, ...bodyData } = await req.json();
@@ -174,14 +174,14 @@ export async function createArticle(req: Request): Promise<any> {
           res && res.success && res.path ? [res.path] : []
         );
 
-        data.newImages = newImages; // only new uploaded files
+        data.newImages = newImages;
       }
     } else {
       return { error: 'Unsupported content type', status: 400 };
     }
 
     // ---- Upsert ----
-    let articleDoc = await ArticleModel.findOne();
+    const articleDoc = await ArticleModel.findOne();
 
     if (articleDoc) {
       if (data.title) articleDoc.title = data.title;
@@ -191,35 +191,24 @@ export async function createArticle(req: Request): Promise<any> {
       if (data.body) articleDoc.body = data.body;
       if (data.publishedAt) articleDoc.publishedAt = data.publishedAt;
 
-      // ---- Ensure images array exists ----
+      // Ensure images array exists
       if (!articleDoc.images) articleDoc.images = [];
 
-      // ---- Update images ----
+      // Replace old images if new ones are uploaded
       if (data.newImages && data.newImages.length > 0) {
-        // Replace only first N images with new uploaded ones
-        articleDoc.images = [
-          ...data.newImages, // new uploaded images
-          ...articleDoc.images.slice(data.newImages.length), // keep remaining old images
-        ];
+        articleDoc.images = [...data.newImages, ...articleDoc.images.slice(data.newImages.length)];
       }
 
       await articleDoc.save();
       return { status: 200, data: articleDoc };
-    } else {
-      // Create new
-      const newImages = [...(data.newImages || [])];
-      data.images = newImages;
-      delete data.newImages;
-
-      const newDoc = await ArticleModel.create(data);
-      return { status: 200, data: newDoc };
     }
 
-    // ---- Create new if none exists ----
-    const newDoc = await ArticleModel.create({
-      ...data,
-      images: data.newImages || [],
-    });
+    // ---- Create new (no need for else) ----
+    const newImages = [...(data.newImages || [])];
+    data.images = newImages;
+    delete data.newImages;
+
+    const newDoc = await ArticleModel.create(data);
     return { status: 200, data: newDoc };
   } catch (error) {
     console.error('createArticle error:', error);

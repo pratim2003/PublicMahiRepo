@@ -3,11 +3,9 @@
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
 import Alert from '@mui/material/Alert';
 
 import { paths } from 'src/routes/paths';
-import { RouterLink } from 'src/routes/components';
 
 import { CONFIG } from 'src/config-global';
 
@@ -63,7 +61,7 @@ export function AuthSplitLayout({ sx, section, children, header }: AuthSplitLayo
             rightArea: (
               <Box display="flex" alignItems="center" gap={{ xs: 1, sm: 1.5 }}>
                 {/* -- Help link -- */}
-             
+
                 {/* -- Settings button -- */}
                 <SettingsButton />
               </Box>
@@ -87,7 +85,6 @@ export function AuthSplitLayout({ sx, section, children, header }: AuthSplitLayo
           layoutQuery={layoutQuery}
           imgUrl={section?.imgUrl}
           method={CONFIG.auth.method}
-       
           methods={[
             {
               label: 'Jwt',

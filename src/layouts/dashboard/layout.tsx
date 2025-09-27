@@ -22,10 +22,10 @@ import { _account } from '../config-nav-account';
 import { MenuButton } from '../components/menu-button';
 import { LayoutSection } from '../core/layout-section';
 import { HeaderSection } from '../core/header-section';
+import DeployButton from '../components/deploye-button';
 import { AccountDrawer } from '../components/account-drawer';
 import { SettingsButton } from '../components/settings-button';
 import { navData as dashboardNavData } from '../config-nav-dashboard';
-import DeployButton from '../../layouts/components/deploye-button';
 // ----------------------------------------------------------------------
 
 export type DashboardLayoutProps = {
@@ -129,7 +129,7 @@ export function DashboardLayout({ sx, children, header, data }: DashboardLayoutP
             rightArea: (
               <Box display="flex" alignItems="center" gap={{ xs: 0, sm: 0.75 }}>
                 {/* -- Searchbar -- */}
-<DeployButton/>
+                <DeployButton />
                 {/* <Searchbar data={navData} /> */}
 
                 {/* -- Language popover -- */}

@@ -1,12 +1,14 @@
 'use client';
 
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 import React, { useRef, useState, useEffect } from 'react';
 
 import { Pause, PlayArrow } from '@mui/icons-material';
-import { Box, Slider, Container, Typography, IconButton, Button, TextField } from '@mui/material';
-import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
+import { Box, Slider, Button, Container, TextField, Typography, IconButton } from '@mui/material';
+
 import { DashboardContent } from 'src/layouts/dashboard';
+
 import DeployButton from '../../../../layouts/components/deploye-button';
 // ----------------------------------------------------------------------
 
@@ -14,7 +16,7 @@ export function OverviewBookingView({ broadcastData }: { broadcastData: any[] })
   const router = useRouter();
   const latest = broadcastData?.[0]; // show the latest broadcast first
   const audioRef = useRef<HTMLAudioElement | null>(null);
-const [showDeploy, setShowDeploy] = useState(false);
+  const [showDeploy, setShowDeploy] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0); // current time
   const [duration, setDuration] = useState(0); // total duration
@@ -141,7 +143,7 @@ const [showDeploy, setShowDeploy] = useState(false);
 
       if (res.ok) {
         setEditMode(false);
-         setShowDeploy(true); 
+        setShowDeploy(true);
         router.refresh();
         toast.success('Content updated successfully!');
       } else {
@@ -168,25 +170,26 @@ const [showDeploy, setShowDeploy] = useState(false);
           {/* 🔹 Edit Button Top-right */}
           {!editMode && (
             <>
-            <Button
-              variant="outlined"
-              size="small"
-              onClick={() => setEditMode(true)}
-              sx={{
-                position: 'absolute',
-                top: 20,
-                right: 20,
-                color: 'white',
-                backgroundColor: '#00a76f',
-              }}
-            >
-              Edit
-            </Button>
-  {showDeploy && (
-  <Box mt={3}>
-    <DeployButton />
-  </Box>
-)}</>
+              <Button
+                variant="outlined"
+                size="small"
+                onClick={() => setEditMode(true)}
+                sx={{
+                  position: 'absolute',
+                  top: 20,
+                  right: 20,
+                  color: 'white',
+                  backgroundColor: '#00a76f',
+                }}
+              >
+                Edit
+              </Button>
+              {showDeploy && (
+                <Box mt={3}>
+                  <DeployButton />
+                </Box>
+              )}
+            </>
           )}
 
           {/* 🔹 Edit Mode Form */}

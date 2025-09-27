@@ -1,8 +1,10 @@
-import { CONFIG } from 'src/config-global';
-import connect from 'src/lib/db';
-import ArticleModel from 'src/lib/modals/write';
-import { OverviewEcommerceView } from 'src/sections/overview/e-commerce/view';
 import { Toaster } from 'react-hot-toast';
+
+import connect from 'src/lib/db';
+import { CONFIG } from 'src/config-global';
+import ArticleModel from 'src/lib/modals/write';
+
+import { OverviewEcommerceView } from 'src/sections/overview/e-commerce/view';
 
 // ----------------------------------------------------------------------
 export const revalidate = false;

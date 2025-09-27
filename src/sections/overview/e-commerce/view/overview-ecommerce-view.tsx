@@ -70,7 +70,7 @@ export function OverviewEcommerceView({ writingData }: { writingData: any }) {
         method: 'POST',
         body: formData,
       });
-
+      console.log(res)
       if (!res.ok) throw new Error('Failed to update');
 
       await res.json();

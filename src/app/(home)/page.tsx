@@ -147,6 +147,7 @@ export default async function Page() {
       // next: { revalidate: 30 },
     });
     const data = await res.json();
+    console.log(data)
     if (!data) {
       return <div>No home data found</div>;
     }
